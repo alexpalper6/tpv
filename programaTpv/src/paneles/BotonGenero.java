@@ -1,6 +1,6 @@
-package Paneles;
+package paneles;
 
-import Juegos.Generos;
+import juegos.Generos;
 
 import javax.swing.*;
 

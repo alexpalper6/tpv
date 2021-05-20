@@ -1,4 +1,4 @@
-package Paneles;
+package paneles;
 
 public class PanelJuegos {
 }

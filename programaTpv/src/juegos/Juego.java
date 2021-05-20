@@ -1,11 +1,7 @@
-package Juegos;
+package juegos;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.Serializable;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Objects;
 
 public class Juego implements Serializable {

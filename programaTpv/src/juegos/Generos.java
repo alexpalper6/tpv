@@ -1,6 +1,4 @@
-package Juegos;
-
-import javax.swing.*;
+package juegos;
 
 public enum Generos {
     JRPG("Rol"),
