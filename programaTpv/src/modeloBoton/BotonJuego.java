@@ -13,7 +13,7 @@ public class BotonJuego {
     public BotonJuego(Juego juego) {
         this.juego = juego;
         this.boton = new JButton(juego.getImagen());
-        boton.setBorder(new EmptyBorder(2, 2, 2, 2));
+        boton.setBorder(new EmptyBorder(1, 2, 1, 2));
         boton.addActionListener(e-> {
             juego.getNombre();
         });

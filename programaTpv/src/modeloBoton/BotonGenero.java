@@ -6,13 +6,23 @@ import javax.swing.*;
 import java.util.Objects;
 
 public class BotonGenero {
-    Generos genero;
-    JButton boton;
+    private final Generos genero;
+    private final JButton boton;
 
     public BotonGenero(Generos genero) {
         this.genero = genero;
         this.boton = new JButton(genero.getDescripcion());
     }
+
+    public Generos getGenero() {
+        return genero;
+    }
+
+
+    public JButton getBoton() {
+        return boton;
+    }
+
 
     @Override
     public boolean equals(Object o) {
