@@ -1,4 +1,4 @@
-package paneles;
+package modeloPaneles;
 
 public class PanelJuegos {
 }
