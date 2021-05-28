@@ -35,7 +35,6 @@ public class PanelGeneros {
         for (Map.Entry<BotonGenero, Set<BotonJuego>> mapa : listaGenerosJuegos.entrySet()){
 
             panel.add(mapa.getKey().getBoton());
-            //TODO: HAy que conseguir que al darle borre los botones que tenía
             mapa.getKey().getBoton().addActionListener( e-> {
                 panelJuegos.actualizaListaBotones(mapa.getValue());
                 JOptionPane.showMessageDialog(panelJuegos.getPanelJuego(), "Funciona");
