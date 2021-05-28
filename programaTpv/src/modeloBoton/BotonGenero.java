@@ -32,6 +32,8 @@ public class BotonGenero {
         return genero == that.genero;
     }
 
+
+
     @Override
     public int hashCode() {
         return Objects.hash(genero);

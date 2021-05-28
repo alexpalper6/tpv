@@ -33,9 +33,10 @@ public class PanelJuegos {
         listaJuegos.add(new BotonJuego(juego));
         panelJuego.add(new BotonJuego(juego).getBoton());
     }
-
-    public void actualizaListaBotone() {
-        for (BotonJuego boton : listaJuegos) {
+    //TODO: NO borra los botones
+    public void actualizaListaBotones(Set<BotonJuego> listaDeJuegos) {
+        panelJuego.removeAll();
+        for (BotonJuego boton : listaDeJuegos) {
             panelJuego.add(boton.getBoton());
         }
     }

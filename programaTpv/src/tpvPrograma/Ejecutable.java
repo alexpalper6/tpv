@@ -6,6 +6,7 @@ import modeloPaneles.PanelGeneros;
 import modeloPaneles.PanelJuegos;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
@@ -31,10 +32,16 @@ public class Ejecutable {
             e.printStackTrace();
         }
         //TODO: Falta GridBagLayout
-        PanelGeneros panelGeneros = new PanelGeneros();
+        PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
         JFrame frame = new JFrame();
-        frame.add(panelJuego.getPanelJuego());
-        //frame.add(panelGeneros.getPanel());
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints g1 = new GridBagConstraints();
+        g1.gridx = 0;
+        g1.gridy = 0;
+        frame.add(panelJuego.getPanelJuego(), g1);
+        g1.gridx = 1;
+        g1.gridy = 1;
+        frame.add(panelGeneros.getPanel(), g1);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
