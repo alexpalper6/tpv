@@ -4,19 +4,24 @@ import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 import modeloBoton.BotonGenero;
 import modeloBoton.BotonJuego;
 import modeloJuego.Generos;
+import modeloJuego.Juego;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
 public class PanelGeneros {
-    private final Map<BotonGenero, Set<BotonJuego>> listaGenerosJuegos;
+    private final Map<Generos, Set<BotonJuego>> listaGenerosJuegos;
+    private final Set<BotonGenero> botonesGeneros;
     private final PanelJuegos panelJuegos;
     private final JPanel panel;
 
     public PanelGeneros(PanelJuegos panelJuegos) {
-        this.listaGenerosJuegos = new HashMap<BotonGenero, Set<BotonJuego>>();
+        this.listaGenerosJuegos = new HashMap<Generos, Set<BotonJuego>>();
         this.panel = new JPanel(new GridLayout(0, 1));
         this.panelJuegos = panelJuegos;
+        this.botonesGeneros = new HashSet<>();
+        generaMapa();
         generaBotonesPanel();
     }
 
@@ -24,22 +29,30 @@ public class PanelGeneros {
         return panel;
     }
     //TODO: No debe de devolver esto.
-    public Map<BotonGenero, Set<BotonJuego>> getListaGenerosJuegos() {
+    public Map<Generos, Set<BotonJuego>> getListaGenerosJuegos() {
         return listaGenerosJuegos;
     }
 
     private void generaBotonesPanel() {
-        for (Generos genero : Generos.values()) {
-            listaGenerosJuegos.put(new BotonGenero(genero), new HashSet<>());
+        for (Map.Entry<Generos, Set<BotonJuego>> mapa : listaGenerosJuegos.entrySet()){
+            botonesGeneros.add(new BotonGenero(mapa.getKey()));
         }
-        for (Map.Entry<BotonGenero, Set<BotonJuego>> mapa : listaGenerosJuegos.entrySet()){
-
-            panel.add(mapa.getKey().getBoton());
-            mapa.getKey().getBoton().addActionListener( e-> {
-                panelJuegos.actualizaListaBotones(mapa.getValue());
-                JOptionPane.showMessageDialog(panelJuegos.getPanelJuego(), "Funciona");
+        for (BotonGenero bg : botonesGeneros) {
+            panel.add(bg.getBoton());
+            Generos generoBoton = bg.getGenero();
+            bg.getBoton().addActionListener(e -> {
+                panelJuegos.actualizaListaBotones(listaGenerosJuegos.get(generoBoton));
             });
         }
     }
 
+    private void generaMapa() {
+        for (Generos genero : Generos.values()) {
+            listaGenerosJuegos.put(genero, new HashSet<>());
+        }
+    }
+
+    public void anyadeJuegoListaGenero(Juego juego) {
+        listaGenerosJuegos.get(juego.getGenero()).add(new BotonJuego(juego));
+    }
 }

@@ -40,6 +40,8 @@ public class PanelJuegos {
         for (BotonJuego boton : listaDeJuegos) {
             panelJuego.add(boton.getBoton());
         }
+        panelJuego.revalidate();
+        panelJuego.repaint();
     }
 
 }

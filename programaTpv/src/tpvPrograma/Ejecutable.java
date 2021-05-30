@@ -16,6 +16,7 @@ public class Ejecutable {
     public static void main(String[] args) {
         File ficLecturaObjetos = new File("Juegos.csv");
         PanelJuegos panelJuego = new PanelJuegos();
+        PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
         try (BufferedReader bf = new BufferedReader(new FileReader(ficLecturaObjetos))) {
             String linea;
             while ((linea = bf.readLine()) != null) {
@@ -23,6 +24,7 @@ public class Ejecutable {
                 Generos genero = Generos.valueOf(campos.get(2));
                 Juego juego = new Juego(campos.get(0), Integer.parseInt(campos.get(1)), genero);
                 panelJuego.anyadeJuego(juego);
+                panelGeneros.anyadeJuegoListaGenero(juego);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -32,7 +34,7 @@ public class Ejecutable {
             e.printStackTrace();
         }
         //TODO: Falta GridBagLayout
-        PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
+
         JFrame frame = new JFrame();
         frame.setLayout(new GridBagLayout());
         GridBagConstraints g1 = new GridBagConstraints();
