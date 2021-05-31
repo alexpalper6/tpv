@@ -1,6 +1,5 @@
 package modeloPaneles;
 
-import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 import modeloBoton.BotonGenero;
 import modeloBoton.BotonJuego;
 import modeloJuego.Generos;
@@ -17,7 +16,7 @@ public class PanelGeneros {
     private final JPanel panel;
 
     public PanelGeneros(PanelJuegos panelJuegos) {
-        this.listaGenerosJuegos = new HashMap<Generos, Set<BotonJuego>>();
+        this.listaGenerosJuegos = new HashMap<>();
         this.panel = new JPanel(new GridLayout(0, 1));
         this.panelJuegos = panelJuegos;
         this.botonesGeneros = new HashSet<>();
@@ -41,7 +40,7 @@ public class PanelGeneros {
             panel.add(bg.getBoton());
             Generos generoBoton = bg.getGenero();
             bg.getBoton().addActionListener(e -> {
-                panelJuegos.actualizaListaBotones(listaGenerosJuegos.get(generoBoton));
+                panelJuegos.actualizaBotonesEnPanel(listaGenerosJuegos.get(generoBoton));
             });
         }
     }
@@ -54,5 +53,6 @@ public class PanelGeneros {
 
     public void anyadeJuegoListaGenero(Juego juego) {
         listaGenerosJuegos.get(juego.getGenero()).add(new BotonJuego(juego));
+        listaGenerosJuegos.get(Generos.TODOS).add(new BotonJuego(juego));
     }
 }

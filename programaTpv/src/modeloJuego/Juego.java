@@ -37,15 +37,21 @@ public class Juego implements Serializable {
         return nombre;
     }
 
+    public int getPrecio() {
+        return precio;
+    }
+
     /**
      * Genera una salida del valor del precio que está en céntimos a formato euros y céntimos.
      * @return precio en formato euros y céntimos
      */
-    public String getPrecio() {
+    public String getPrecioBonito() {
         int euros = precio / 100;
         int centimos = precio % 100;
         return euros + "," + centimos;
     }
+
+
 
     /**
      * Obtiene el género del juego.
@@ -119,7 +125,7 @@ public class Juego implements Serializable {
      */
     private ImageIcon cambiaTamanyoImagen(ImageIcon imagen) {
         Image img = imagen.getImage();
-        Image imagenTamanyoModif = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image imagenTamanyoModif = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         return new ImageIcon(imagenTamanyoModif);
     }
 
