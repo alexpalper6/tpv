@@ -5,6 +5,7 @@ import modeloJuego.Juego;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.util.Objects;
 
 public class BotonJuego {
     private final JButton boton;
@@ -44,5 +45,18 @@ public class BotonJuego {
         frame.pack();
 
         frame.setVisible(true);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BotonJuego that = (BotonJuego) o;
+        return juego.equals(that.juego);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(juego);
     }
 }

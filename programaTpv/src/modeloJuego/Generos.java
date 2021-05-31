@@ -1,12 +1,13 @@
 package modeloJuego;
 
 public enum Generos {
-    JRPG("Rol"),
+    RPG("Juegos de Rol"),
     MMORPG("Rol multijugador masivo"),
     FPS("Shooter primera persona"),
     AVENTURAS("Aventuras"),
     CASUAL("Casual"),
-    PLATAFORMAS("Plataformas");
+    PLATAFORMAS("Plataformas"),
+    TODOS("Todos");
 
     private String descripcion;
 
