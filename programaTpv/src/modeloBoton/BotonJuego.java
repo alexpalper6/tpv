@@ -2,6 +2,7 @@ package modeloBoton;
 
 import modeloJuego.Generos;
 import modeloJuego.Juego;
+import modeloTicket.Ticket;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -19,14 +20,13 @@ public class BotonJuego {
      * Constructor del objeto, genera botón a partir de la imagen del juego,  y genera su actionListener.
      * @param juego
      */
-    public BotonJuego(Juego juego) {
+    public BotonJuego(Juego juego, Ticket ticket) {
         this.juego = juego;
         this.boton = new JButton(juego.getImagen());
         //TODO: Posiblemente haya que quitarlo
         //boton.setBorder(new EmptyBorder(1, 2, 1, 2));
         boton.addActionListener(e-> {
-            juego.getInfo();
-            System.out.println(juego.getNombre());
+            ticket.anyadeATicket(juego);
         });
     }
 

@@ -5,6 +5,7 @@ import modeloJuego.Juego;
 import modeloPaneles.PanelGeneros;
 import modeloPaneles.PanelJuegos;
 import modeloPaneles.PanelRecibo;
+import modeloTicket.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,10 +15,13 @@ import java.util.List;
 
 public class Ejecutable {
     //Por ahora solo son pruebas
+    //TODO: Usar look and feel
     public static void main(String[] args) {
         File ficLecturaObjetos = new File("Juegos.csv");
+
         PanelRecibo panelRecibo = new PanelRecibo();
-        PanelJuegos panelJuego = new PanelJuegos(panelRecibo);
+        Ticket ticket = new Ticket(panelRecibo);
+        PanelJuegos panelJuego = new PanelJuegos(panelRecibo, ticket);
         PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
 
         try (BufferedReader bf = new BufferedReader(new FileReader(ficLecturaObjetos))) {

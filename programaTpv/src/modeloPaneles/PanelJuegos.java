@@ -2,6 +2,7 @@ package modeloPaneles;
 
 import modeloBoton.BotonJuego;
 import modeloJuego.Juego;
+import modeloTicket.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,16 +15,16 @@ public class PanelJuegos {
      * Contiene el panel y una referencia al panel del recibo.
      */
     private final JPanel panelJuego;
-    private final PanelRecibo panelRecibo;
+    private final Ticket ticket;
 
     /**
      * Constructor del panel de juegos.
      * Genera el panel con el layout correspondiente y obtiene la referencia del panel del recibo.
      * @param panelRecibo
      */
-    public PanelJuegos(PanelRecibo panelRecibo) {
+    public PanelJuegos(PanelRecibo panelRecibo, Ticket ticket) {
         this.panelJuego = new JPanel(new GridLayout( 5, 0));
-        this.panelRecibo = panelRecibo;
+        this.ticket = ticket;
     }
 
     /**
@@ -39,7 +40,7 @@ public class PanelJuegos {
      * @param juego
      */
     public void anyadeJuego(Juego juego) {
-        panelJuego.add(new BotonJuego(juego).getBoton());
+        panelJuego.add(new BotonJuego(juego, ticket).getBoton());
     }
 
     /**
