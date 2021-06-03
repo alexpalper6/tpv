@@ -76,4 +76,14 @@ public class Ticket implements Serializable {
     private void actualizaPrecio(Juego juego) {
         costeTotal += juego.getPrecio();
     }
+
+    public Map<Juego, Integer> getCantidad() {
+        Map<Juego, Integer> copiaMapa = new HashMap<>();
+        copiaMapa.putAll(listaJuegosSeleccionados);
+        return copiaMapa;
+    }
+
+    public void quitaDeLista(Juego juego) {
+        listaJuegosSeleccionados.remove(juego);
+    }
 }

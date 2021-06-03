@@ -120,7 +120,7 @@ public class Juego implements Serializable {
     }
 
     public String getInfo() {
-        return "Info objeto";
+        return nombre + " - " + getPrecioFormateado();
     }
 
     /**
