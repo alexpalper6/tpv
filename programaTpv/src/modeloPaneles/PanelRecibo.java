@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
-
+//TODO: Cambiar
 public class PanelRecibo {
     private final Map<Juego, Integer> listaJuegosRecibo;
     private final JPanel panelRecibo;

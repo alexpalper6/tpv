@@ -45,7 +45,7 @@ public class Juego implements Serializable {
      * Genera una salida del valor del precio que está en céntimos a formato euros y céntimos.
      * @return precio en formato euros y céntimos
      */
-    public String getPrecioBonito() {
+    public String getPrecioFormateado() {
         int euros = precio / 100;
         int centimos = precio % 100;
         return euros + "," + centimos;
@@ -108,14 +108,19 @@ public class Juego implements Serializable {
     private ImageIcon obtieneImagen() {
         File rutaImagenJuego = new File("imagenes" + File.separator + getNombreParaImagen());
         ImageIcon icono = new ImageIcon(rutaImagenJuego.getPath());
+
         //Si la imagne es encontrada, carga si no, se le pone imagen predeterminada
         boolean imagenEncontrada = icono.getIconHeight() > -1;
         if (imagenEncontrada) {
-            icono = cambiaTamanyoImagen(icono);
+            return icono;
         } else {
             icono = new ImageIcon("imagenes" + File.separator + "Imagen_Defecto.png");
         }
         return icono;
+    }
+
+    public String getInfo() {
+        return "Info objeto";
     }
 
     /**
@@ -123,29 +128,11 @@ public class Juego implements Serializable {
      * @param imagen que se ha obtenido de la carpeta imágenes
      * @return imagen con el tamaño modificado.
      */
+    //TODO: Probablemente no sea necesario
+    /*
     private ImageIcon cambiaTamanyoImagen(ImageIcon imagen) {
         Image img = imagen.getImage();
         Image imagenTamanyoModif = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         return new ImageIcon(imagenTamanyoModif);
-    }
-
-    //Pruebas
-    public static void main(String[] args) {
-        Juego juego = new Juego("Animal Crossing New Horizons", 6999, Generos.FPS);
-
-        JButton button = new JButton(juego.getImagen());
-        //TODO: PARA QUITAR EL BORDE
-        // https://www.decodejava.com/java-jbutton.htm
-                button.setBorder(new EmptyBorder(1,1,55,1));
-
-        JFrame frame = new JFrame();
-        JPanel panel = new JPanel();
-        panel.add(button);
-        frame.add(panel);
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.pack();
-
-        frame.setVisible(true);
-    }
+    } */
 }

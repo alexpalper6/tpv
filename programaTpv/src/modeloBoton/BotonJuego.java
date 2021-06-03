@@ -5,46 +5,45 @@ import modeloJuego.Juego;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.util.Objects;
 
 public class BotonJuego {
+    /**
+     * Atributos del boton, contiene el botón y el juego para tener sus datos.
+     */
     private final JButton boton;
     private final Juego juego;
 
+    /**
+     * Constructor del objeto, genera botón a partir de la imagen del juego,  y genera su actionListener.
+     * @param juego
+     */
     public BotonJuego(Juego juego) {
         this.juego = juego;
         this.boton = new JButton(juego.getImagen());
-        boton.setBorder(new EmptyBorder(1, 2, 1, 2));
+        //TODO: Posiblemente haya que quitarlo
+        //boton.setBorder(new EmptyBorder(1, 2, 1, 2));
         boton.addActionListener(e-> {
-            juego.getNombre();
+            juego.getInfo();
+            System.out.println(juego.getNombre());
         });
-
-
     }
 
+    /**
+     * Devuelve el botón
+     * @return boton del objeto
+     */
     public JButton getBoton() {
         return boton;
     }
 
+    /**
+     * Devuelve el juego que tiene
+     * @return juego
+     */
     public Juego getJuego() {
         return juego;
-    }
-
-    public static void main(String[] args) {
-        Juego juego = new Juego("Animal Crossing New Horizons", 6999, Generos.FPS);
-
-        BotonJuego button = new BotonJuego(juego);
-        //TODO: PARA QUITAR EL BORDE
-        // https://www.decodejava.com/java-jbutton.htm
-        JFrame frame = new JFrame();
-        JPanel panel = new JPanel();
-        panel.add(button.getBoton());
-        frame.add(panel);
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.pack();
-
-        frame.setVisible(true);
     }
 
     @Override
