@@ -4,6 +4,7 @@ import modeloJuego.Juego;
 import modeloTicket.Ticket;
 
 import javax.swing.*;
+import java.awt.*;
 
 //TODO: Cambiar
 public class PanelRecibo {
@@ -12,7 +13,7 @@ public class PanelRecibo {
     private final Ticket ticket;
 
     public PanelRecibo(Ticket ticket) {
-        this.panelRecibo = new JPanel();
+        this.panelRecibo = new JPanel(new GridLayout(0,2));
         this.ticket = ticket;
     }
 
@@ -22,5 +23,9 @@ public class PanelRecibo {
 
     public void hanPulsado(Juego juego) {
         ticket.anyadeATicket(juego);
+        panelRecibo.add(new JLabel(juego.getNombre()));
+        panelRecibo.add(new JButton("X"));
+        panelRecibo.revalidate();
+
     }
 }

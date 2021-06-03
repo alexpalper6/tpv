@@ -39,9 +39,11 @@ public class PanelJuegos {
      * @param juego
      */
     public void anyadeJuego(Juego juego) {
-        BotonJuego n = new BotonJuego(juego);
-        panelJuego.add(n.getBoton());
-        n.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));
+        BotonJuego bj = new BotonJuego(juego);
+        panelJuego.add(bj.getBoton());
+        bj.getBoton().addActionListener(e -> {panelRecibo.hanPulsado(juego);
+          }
+        );
     }
 
     /**
