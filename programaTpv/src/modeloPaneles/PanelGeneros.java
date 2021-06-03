@@ -18,7 +18,7 @@ public class PanelGeneros {
      * para poder llamar al mapa y realizar las acciones necesarias.)
      * Contiene también un panel y una referencia al panel de juegos para poder añadir la lista al panel.
      */
-    private final Map<Generos, Set<BotonJuego>> listaGenerosJuegos;
+    private final Map<Generos, Set<Juego>> listaGenerosJuegos;
     private final Set<BotonGenero> botonesGeneros;
     private final PanelJuegos panelJuegos;
     private final JPanel panel;
@@ -45,7 +45,7 @@ public class PanelGeneros {
         return panel;
     }
     //TODO: No debe de devolver esto.
-    public Map<Generos, Set<BotonJuego>> getListaGenerosJuegos() {
+    public Map<Generos, Set<Juego>> getListaGenerosJuegos() {
         return listaGenerosJuegos;
     }
 
@@ -56,7 +56,7 @@ public class PanelGeneros {
      * de la clave referente del genero del boton.
      */
     private void generaBotonesPanel() {
-        for (Map.Entry<Generos, Set<BotonJuego>> mapa : listaGenerosJuegos.entrySet()){
+        for (Map.Entry<Generos, Set<Juego>> mapa : listaGenerosJuegos.entrySet()){
             botonesGeneros.add(new BotonGenero(mapa.getKey()));
         }
         for (BotonGenero bg : botonesGeneros) {
@@ -79,7 +79,7 @@ public class PanelGeneros {
      * @param juego
      */
     public void anyadeJuegoListaGenero(Juego juego) {
-        listaGenerosJuegos.get(juego.getGenero()).add(new BotonJuego(juego));
-        listaGenerosJuegos.get(Generos.TODOS).add(new BotonJuego(juego));
+        listaGenerosJuegos.get(juego.getGenero()).add(juego);
+        listaGenerosJuegos.get(Generos.TODOS).add(juego);
     }
 }

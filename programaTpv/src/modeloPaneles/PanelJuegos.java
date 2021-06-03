@@ -6,7 +6,6 @@ import modeloTicket.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashSet;
 import java.util.Set;
 
 public class PanelJuegos {
@@ -15,7 +14,7 @@ public class PanelJuegos {
      * Contiene el panel y una referencia al panel del recibo.
      */
     private final JPanel panelJuego;
-    private final Ticket ticket;
+    private final PanelRecibo panelRecibo;
 
     /**
      * Constructor del panel de juegos.
@@ -24,7 +23,7 @@ public class PanelJuegos {
      */
     public PanelJuegos(PanelRecibo panelRecibo, Ticket ticket) {
         this.panelJuego = new JPanel(new GridLayout( 5, 0));
-        this.ticket = ticket;
+        this.panelRecibo = panelRecibo;
     }
 
     /**
@@ -40,7 +39,9 @@ public class PanelJuegos {
      * @param juego
      */
     public void anyadeJuego(Juego juego) {
-        panelJuego.add(new BotonJuego(juego, ticket).getBoton());
+        BotonJuego n = new BotonJuego(juego);
+        panelJuego.add(n.getBoton());
+        n.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));
     }
 
     /**
@@ -48,10 +49,10 @@ public class PanelJuegos {
      * Esa listas que pasan son de la clase PanelGeneros.
      * @param listaDeJuegos
      */
-    public void actualizaBotonesEnPanel(Set<BotonJuego> listaDeJuegos) {
+    public void actualizaBotonesEnPanel(Set<Juego> listaDeJuegos) {
         panelJuego.removeAll();
-        for (BotonJuego boton : listaDeJuegos) {
-            panelJuego.add(boton.getBoton());
+        for (Juego juego : listaDeJuegos) {
+            anyadeJuego(juego);
         }
         panelJuego.revalidate();
         panelJuego.repaint();

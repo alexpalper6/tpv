@@ -16,15 +16,13 @@ public class Ticket implements Serializable {
     private final Map<Juego,Integer> listaJuegosSeleccionados;
     private int costeTotal;
     private final LocalDateTime fechaCreacion;
-    private final PanelRecibo panelRecibo;
 
     /**
      * Constructor de ticket
      */
-    public Ticket(PanelRecibo panelRecibo) {
+    public Ticket() {
         this.listaJuegosSeleccionados = new HashMap<>();
         this.fechaCreacion = LocalDateTime.now();
-        this.panelRecibo = panelRecibo;
     }
 
     public Map<Juego, Integer> getListaJuegosSeleccionados() {

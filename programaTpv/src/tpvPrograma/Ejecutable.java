@@ -18,9 +18,9 @@ public class Ejecutable {
     //TODO: Usar look and feel
     public static void main(String[] args) {
         File ficLecturaObjetos = new File("Juegos.csv");
+        Ticket ticket = new Ticket();
+        PanelRecibo panelRecibo = new PanelRecibo(ticket);
 
-        PanelRecibo panelRecibo = new PanelRecibo();
-        Ticket ticket = new Ticket(panelRecibo);
         PanelJuegos panelJuego = new PanelJuegos(panelRecibo, ticket);
         PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
 

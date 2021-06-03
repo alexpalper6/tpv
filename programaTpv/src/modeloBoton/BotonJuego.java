@@ -20,15 +20,13 @@ public class BotonJuego {
      * Constructor del objeto, genera botón a partir de la imagen del juego,  y genera su actionListener.
      * @param juego
      */
-    public BotonJuego(Juego juego, Ticket ticket) {
+    public BotonJuego(Juego juego) {
         this.juego = juego;
         this.boton = new JButton(juego.getImagen());
         //TODO: Posiblemente haya que quitarlo
         //boton.setBorder(new EmptyBorder(1, 2, 1, 2));
-        boton.addActionListener(e-> {
-            ticket.anyadeATicket(juego);
-        });
     }
+
 
     /**
      * Devuelve el botón
