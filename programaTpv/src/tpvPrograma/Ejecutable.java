@@ -6,17 +6,21 @@ import modeloPaneles.PanelGeneros;
 import modeloPaneles.PanelJuegos;
 import modeloPaneles.PanelRecibo;
 import modeloTicket.Ticket;
+import utilidades.MiLogger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Ejecutable {
+
     //Por ahora solo son pruebas
     //TODO: Usar look and feel
     public static void main(String[] args) {
+
         File ficLecturaObjetos = new File("Juegos.csv");
         Ticket ticket = new Ticket();
         PanelRecibo panelRecibo = new PanelRecibo(ticket);
@@ -44,13 +48,12 @@ public class Ejecutable {
             e.printStackTrace();
         }
 
-
         //TODO: Falta GridBagLayout
 
         JFrame frame = new JFrame();
         frame.setLayout(new GridLayout(1,3));
         frame.add(panelJuego.getPanelJuego());
-        frame.add(panelRecibo.getPanelRecibo());
+        frame.add(panelRecibo.getPanelPrincipal());
         frame.add(panelGeneros.getPanel());
 
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

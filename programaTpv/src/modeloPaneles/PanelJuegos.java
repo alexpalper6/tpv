@@ -6,9 +6,10 @@ import modeloTicket.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Set;
 
-public class PanelJuegos {
+public class PanelJuegos implements Serializable {
     /**
      * Atributos de panel de juego.
      * Contiene el panel y una referencia al panel del recibo.
@@ -18,7 +19,7 @@ public class PanelJuegos {
 
     /**
      * Constructor del panel de juegos.
-     * Genera el panel con el layout correspondiente y obtiene la referencia del panel del recibo.
+     * Genera el panel y obtiene la referencia del panel del recibo.
      * @param panelRecibo
      */
     public PanelJuegos(PanelRecibo panelRecibo, Ticket ticket) {
@@ -36,13 +37,14 @@ public class PanelJuegos {
 
     /**
      * Añade un boton de un juego al panel.
+     * Le añade un action listener para usar un el método de panelRecibo hanPulsado.
      * @param juego
      */
     public void anyadeJuego(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
         panelJuego.add(bj.getBoton());
         bj.getBoton().addActionListener(e -> {panelRecibo.hanPulsado(juego);
-          }
+                }
         );
     }
 

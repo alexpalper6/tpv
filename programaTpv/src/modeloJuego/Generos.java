@@ -1,6 +1,8 @@
 package modeloJuego;
 
-public enum Generos {
+import java.io.Serializable;
+
+public enum Generos implements Serializable {
     /**
      * Tipos de géneros
      */

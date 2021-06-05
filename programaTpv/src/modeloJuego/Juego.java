@@ -1,16 +1,18 @@
 package modeloJuego;
 
+import utilidades.MiLogger;
+
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class Juego implements Serializable {
     /**
-     * Atributos del objeto, obtenidos a futuro al leer de un fichero. //TODO:Cambiarlo cuando se genere el objeto con fichero
+     * Atributos del objeto, obtenidos al leer de un fichero.
      */
+
     private final String nombre;
     private int precio;
     private final Generos genero;
@@ -23,6 +25,7 @@ public class Juego implements Serializable {
      * @param genero
      */
     public Juego(String nombre, int precio, Generos genero) {
+
         this.nombre = nombre;
         this.precio = precio;
         this.genero = genero;
@@ -37,18 +40,22 @@ public class Juego implements Serializable {
         return nombre;
     }
 
+    /**
+     * Obtiene el precio.
+     * @return int valor numérico del precio.
+     */
     public int getPrecio() {
         return precio;
     }
 
     /**
      * Genera una salida del valor del precio que está en céntimos a formato euros y céntimos.
-     * @return precio en formato euros y céntimos
+     * @return precio en formato euros y céntimos.
      */
     public String getPrecioFormateado() {
         int euros = precio / 100;
         int centimos = precio % 100;
-        return euros + "," + centimos;
+        return euros + "," + centimos + "€";
     }
 
 
@@ -69,11 +76,6 @@ public class Juego implements Serializable {
         return imagen;
     }
 
-    /**
-     *  Equals de la clase, compara objetos.
-     * @param o
-     * @return boleano si es igual el objeto a otro o no
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,10 +86,6 @@ public class Juego implements Serializable {
                 genero == juego.genero;
     }
 
-    /**
-     * Genera código hash del objeto.
-     * @return int
-     */
     @Override
     public int hashCode() {
         return Objects.hash(nombre, precio, genero);
@@ -119,6 +117,10 @@ public class Juego implements Serializable {
         return icono;
     }
 
+    /**
+     * Obtiene la información del juego.
+     * @return String datos del juego.
+     */
     public String getInfo() {
         return nombre + " - " + getPrecioFormateado();
     }
