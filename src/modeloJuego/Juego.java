@@ -100,7 +100,7 @@ public class Juego implements Serializable {
      * @return icono que se ha obtenido de la carpeta imágenes.
      */
     private ImageIcon obtieneImagen() {
-        File rutaImagenJuego = new File("imagenes" + File.separator + getNombreParaImagen());
+        File rutaImagenJuego = new File("." + File.separator + "resources" + File.separator + "imagenes" + File.separator + getNombreParaImagen());
         ImageIcon icono = new ImageIcon(rutaImagenJuego.getPath());
 
         //Si la imagen es encontrada, carga si no, se le pone imagen predeterminada
