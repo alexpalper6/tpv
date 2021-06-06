@@ -1,6 +1,7 @@
 package modeloJuego;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Objects;
@@ -100,13 +101,14 @@ public class Juego implements Serializable {
      * @return icono que se ha obtenido de la carpeta imágenes.
      */
     private ImageIcon obtieneImagen() {
-        File rutaImagenJuego = new File("." + File.separator + "resources" + File.separator + "imagenes" + File.separator + getNombreParaImagen());
+        File rutaImagenJuego = new File("imagenes" + File.separator + getNombreParaImagen());
         ImageIcon icono = new ImageIcon(rutaImagenJuego.getPath());
 
         //Si la imagen es encontrada, carga si no, se le pone imagen predeterminada
         boolean imagenEncontrada = icono.getIconHeight() > -1;
         if (imagenEncontrada) {
-            return icono;
+            return cambiaTamanyoImagen(icono);
+            //return icono;
         } else {
             icono = new ImageIcon("imagenes" + File.separator + "Imagen_Defecto.png");
         }
@@ -127,10 +129,10 @@ public class Juego implements Serializable {
      * @return imagen con el tamaño modificado.
      */
     //TODO: Probablemente no sea necesario
-    /*
+
     private ImageIcon cambiaTamanyoImagen(ImageIcon imagen) {
         Image img = imagen.getImage();
-        Image imagenTamanyoModif = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        Image imagenTamanyoModif = img.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
         return new ImageIcon(imagenTamanyoModif);
-    } */
+    }
 }

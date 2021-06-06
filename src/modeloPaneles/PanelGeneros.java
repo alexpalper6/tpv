@@ -29,8 +29,9 @@ public class PanelGeneros implements Serializable {
      * Genera el mapa y los botones.
      *
      * @param panelJuegos
+     * @param tamanyoMonitor
      */
-    public PanelGeneros(PanelJuegos panelJuegos) {
+    public PanelGeneros(PanelJuegos panelJuegos, Dimension tamanyoMonitor) {
         this.listaGenerosJuegos = new LinkedHashMap<>();
         this.panel = new JPanel(new GridLayout(0, 1));
         this.panelJuegos = panelJuegos;

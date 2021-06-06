@@ -29,10 +29,11 @@ public class PanelRecibo implements Serializable {
      * Constructor de PanelRecibo.
      * Genera los atributos.
      * @param ticket
+     * @param tamanyoMonitor
      */
-    public PanelRecibo(Ticket ticket) {
+    public PanelRecibo(Ticket ticket, Dimension tamanyoMonitor) {
         this.panelPrincipal = new JPanel(new GridLayout(2,1));
-        this.panelListaJuegos = new JPanel(new GridLayout(0, 2));
+        this.panelListaJuegos = new JPanel(new FlowLayout(FlowLayout.LEADING));
         this.panelInteractivoRecibo = new JPanel();
         generaPanelInteractivo();
         this.ticket = ticket;

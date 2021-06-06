@@ -7,6 +7,8 @@ import modeloTicket.Ticket;
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class PanelJuegos implements Serializable {
@@ -15,15 +17,21 @@ public class PanelJuegos implements Serializable {
      * Contiene el panel y una referencia al panel del recibo.
      */
     private final JPanel panelJuego;
+    private final JScrollPane panelConScroll;
     private final PanelRecibo panelRecibo;
+
+
+
 
     /**
      * Constructor del panel de juegos.
      * Genera el panel y obtiene la referencia del panel del recibo.
      * @param panelRecibo
      */
-    public PanelJuegos(PanelRecibo panelRecibo, Ticket ticket) {
-        this.panelJuego = new JPanel(new GridLayout( 5, 0));
+    public PanelJuegos(PanelRecibo panelRecibo, Dimension tamanyoMonitor) {
+
+        this.panelJuego = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        this.panelConScroll = new JScrollPane(panelJuego);
         this.panelRecibo = panelRecibo;
     }
 
@@ -42,10 +50,12 @@ public class PanelJuegos implements Serializable {
      */
     public void anyadeJuego(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
-        panelJuego.add(bj.getBoton());
+        bj.getBoton().setPreferredSize(new Dimension(300, 300));
         bj.getBoton().addActionListener(e -> {panelRecibo.hanPulsado(juego);
                 }
         );
+        panelJuego.add(bj.getBoton());
+
     }
 
     /**
@@ -61,5 +71,9 @@ public class PanelJuegos implements Serializable {
         panelJuego.revalidate();
         panelJuego.repaint();
     }
+
+
+
+
 
 }

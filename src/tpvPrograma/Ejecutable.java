@@ -11,6 +11,7 @@ import utilidades.TPVLogger;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,13 +21,14 @@ public class Ejecutable {
     //Por ahora solo son pruebas
     //TODO: Usar look and feel
     public static void main(String[] args) {
+        Dimension tamanyoMonitor = Toolkit.getDefaultToolkit().getScreenSize();
 
         File ficLecturaObjetos = new File("Juegos.csv");
         Ticket ticket = new Ticket();
-        PanelRecibo panelRecibo = new PanelRecibo(ticket);
+        PanelRecibo panelRecibo = new PanelRecibo(ticket, tamanyoMonitor);
 
-        PanelJuegos panelJuego = new PanelJuegos(panelRecibo, ticket);
-        PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
+        PanelJuegos panelJuego = new PanelJuegos(panelRecibo, tamanyoMonitor);
+        PanelGeneros panelGeneros = new PanelGeneros(panelJuego, tamanyoMonitor);
 
         try (BufferedReader bf = new BufferedReader(new FileReader(ficLecturaObjetos))) {
             String linea;
@@ -52,10 +54,17 @@ public class Ejecutable {
         //TODO: Falta GridBagLayout
 
         JFrame frame = new JFrame();
-        frame.setLayout(new GridLayout(1,3));
-        frame.add(panelJuego.getPanelJuego());
-        frame.add(panelRecibo.getPanelPrincipal());
-        frame.add(panelGeneros.getPanel());
+        frame.setLayout(new BorderLayout());
+
+        int tamanyoHorizontal = (int)tamanyoMonitor.getWidth() * 2 / 5;
+        panelJuego.getPanelJuego().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
+        frame.add(panelJuego.getPanelJuego(), BorderLayout.WEST);
+        panelRecibo.getPanelPrincipal().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
+        frame.add(panelRecibo.getPanelPrincipal(), BorderLayout.CENTER);
+
+        tamanyoHorizontal = (int)tamanyoMonitor.getWidth() / 5;
+        panelGeneros.getPanel().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
+        frame.add(panelGeneros.getPanel(), BorderLayout.EAST);
 
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setUndecorated(false);
