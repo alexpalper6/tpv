@@ -6,14 +6,14 @@ import modeloPaneles.PanelGeneros;
 import modeloPaneles.PanelJuegos;
 import modeloPaneles.PanelRecibo;
 import modeloTicket.Ticket;
-import utilidades.MiLogger;
+import utilidades.TPVLogger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Ejecutable {
 
@@ -36,16 +36,17 @@ public class Ejecutable {
                 Juego juego = new Juego(campos.get(0), Integer.parseInt(campos.get(1)), genero);
                 panelJuego.anyadeJuego(juego);
                 panelGeneros.anyadeJuegoListaGenero(juego);
+                TPVLogger.log(Level.INFO, "Juego " + juego.getNombre() + " añadido correctamente.");
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            TPVLogger.log(Level.SEVERE, "No se ha encontrado el fichero.");
         } catch (ArrayIndexOutOfBoundsException aibe) {
-
+            TPVLogger.log(Level.WARNING, "El juego no se ha creado correctamente.");
             //TODO: Log del aibe
         } catch (IllegalArgumentException iae) {
-            iae.printStackTrace();
+
         } catch (IOException e) {
-            e.printStackTrace();
+            TPVLogger.log(Level.WARNING, "Algo ha pasado.");
         }
 
         //TODO: Falta GridBagLayout

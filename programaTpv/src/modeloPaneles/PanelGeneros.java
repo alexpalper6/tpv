@@ -31,10 +31,10 @@ public class PanelGeneros implements Serializable {
      * @param panelJuegos
      */
     public PanelGeneros(PanelJuegos panelJuegos) {
-        this.listaGenerosJuegos = new HashMap<>();
+        this.listaGenerosJuegos = new LinkedHashMap<>();
         this.panel = new JPanel(new GridLayout(0, 1));
         this.panelJuegos = panelJuegos;
-        this.botonesGeneros = new HashSet<>();
+        this.botonesGeneros = new LinkedHashSet<>();
         generaMapa();
         generaBotonesPanel();
     }

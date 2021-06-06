@@ -1,10 +1,12 @@
 package modeloTicket;
 
 import modeloJuego.Juego;
+import utilidades.TPVLogger;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.logging.Level;
 
 public class Ticket implements Serializable {
     /**
@@ -125,7 +127,7 @@ public class Ticket implements Serializable {
         String salida = "";
         salida += "RECIBO \t";
         salida += "Fecha: " + getFechaCreacion() + "\n";
-        salida += "---------------------------------------------\n";
+        salida += "----------------------------------------------\n";
 
         int longNombreMasGrande = getNombreMasLargo() + 5;
         String formatoIdentacion = "%-" + longNombreMasGrande + "s %-" + LONGITUD_FORMATO + "s %-" + LONGITUD_FORMATO + "s %-" + LONGITUD_FORMATO + "s %n";
@@ -136,9 +138,10 @@ public class Ticket implements Serializable {
                 salida += "\n";
             } catch (MissingFormatArgumentException msfae) {
                 //TODO: LOG
-                System.out.println(msfae);
+                TPVLogger.log(Level.SEVERE, "El formato no coincide con la cantidad de columnas.");
             }
         }
+        salida +="\n----------------";
         salida += "\nTOTAL: " + getCosteTotal();
         return salida;
     }

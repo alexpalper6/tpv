@@ -1,12 +1,9 @@
 package modeloJuego;
 
-import utilidades.MiLogger;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.logging.Logger;
 
 public class Juego implements Serializable {
     /**
@@ -16,7 +13,6 @@ public class Juego implements Serializable {
     private final String nombre;
     private int precio;
     private final Generos genero;
-    private ImageIcon imagen;
 
     /**
      * Constructor del objeto
@@ -29,7 +25,7 @@ public class Juego implements Serializable {
         this.nombre = nombre;
         this.precio = precio;
         this.genero = genero;
-        this.imagen = obtieneImagen();
+
     }
 
     /**
@@ -72,8 +68,8 @@ public class Juego implements Serializable {
      * Obtiene la imagen del objeto.
      * @return imagen del objeto
      */
-    public ImageIcon getImagen() {
-        return imagen;
+   public ImageIcon getImagen() {
+        return obtieneImagen();
     }
 
     @Override
@@ -100,14 +96,14 @@ public class Juego implements Serializable {
     }
 
     /**
-     * Devuelve la imagen asociada a su nombre en la carpeta imágenes. Sirve para cargar el atributo ImageIcon del objeto.
+     * Devuelve la imagen asociada a su nombre en la carpeta imágenes. Sirve para cargar la imagen que pedirá el botón.
      * @return icono que se ha obtenido de la carpeta imágenes.
      */
     private ImageIcon obtieneImagen() {
         File rutaImagenJuego = new File("imagenes" + File.separator + getNombreParaImagen());
         ImageIcon icono = new ImageIcon(rutaImagenJuego.getPath());
 
-        //Si la imagne es encontrada, carga si no, se le pone imagen predeterminada
+        //Si la imagen es encontrada, carga si no, se le pone imagen predeterminada
         boolean imagenEncontrada = icono.getIconHeight() > -1;
         if (imagenEncontrada) {
             return icono;

@@ -1,6 +1,8 @@
 package modeloPaneles;
 
+import jdk.nashorn.internal.scripts.JO;
 import modeloJuego.Juego;
+import modeloTicket.HistoricoTickets;
 import modeloTicket.Ticket;
 import utilidades.Impresora;
 
@@ -127,7 +129,12 @@ public class PanelRecibo implements Serializable {
         panelInteractivoRecibo.add(costeTotalRecibo);
         JButton boton = new JButton("Imprimir recibo");
         boton.addActionListener( e-> {
-            Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
+            int respuesta = JOptionPane.showConfirmDialog(panelPrincipal,"Le has dado a imprimir recibo, ¿quiere hacerlo?", "Imprimir", JOptionPane.YES_NO_OPTION);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
+                HistoricoTickets.guardaRecibo(ticket);
+            }
+
         });
         panelInteractivoRecibo.add(boton);
 
