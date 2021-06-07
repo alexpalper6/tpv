@@ -136,17 +136,16 @@ public class PanelRecibo {
         this.costeTotalRecibo = new JLabel("Coste total: 0,0€");
         costeTotalRecibo.setFont(new Font("Courier New", Font.BOLD, 16));
         panelInteractivoRecibo.add(costeTotalRecibo);
+
         JButton botonImprimir = new JButton("Imprimir recibo");
         botonImprimir.setPreferredSize(new Dimension(200, 200));
-
         botonImprimir.addActionListener( e-> {
-
             int respuesta = JOptionPane.showConfirmDialog(panelPrincipal,"Le has dado a imprimir recibo, ¿quiere hacerlo?"
                     , "Imprimir " + ticket.getLongitudLista() + " diferente(s) artículos en recibo", JOptionPane.YES_NO_OPTION);
+
             if (respuesta == JOptionPane.YES_OPTION) {
                 HistoricoTickets.guardaRecibo(ticket);
                 Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
-
             }
         });
 
