@@ -128,8 +128,6 @@ public class Juego implements Serializable {
      * @param imagen que se ha obtenido de la carpeta imágenes
      * @return imagen con el tamaño modificado.
      */
-    //TODO: Probablemente no sea necesario
-
     private ImageIcon cambiaTamanyoImagen(ImageIcon imagen) {
         Image img = imagen.getImage();
         Image imagenTamanyoModif = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);

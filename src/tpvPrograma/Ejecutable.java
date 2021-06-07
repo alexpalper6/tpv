@@ -25,10 +25,10 @@ public class Ejecutable {
 
         File ficLecturaObjetos = new File("Juegos.csv");
         Ticket ticket = new Ticket();
-        PanelRecibo panelRecibo = new PanelRecibo(ticket, tamanyoMonitor);
+        PanelRecibo panelRecibo = new PanelRecibo(ticket);
 
-        PanelJuegos panelJuego = new PanelJuegos(panelRecibo, tamanyoMonitor);
-        PanelGeneros panelGeneros = new PanelGeneros(panelJuego, tamanyoMonitor);
+        PanelJuegos panelJuego = new PanelJuegos(panelRecibo);
+        PanelGeneros panelGeneros = new PanelGeneros(panelJuego);
 
         try (BufferedReader bf = new BufferedReader(new FileReader(ficLecturaObjetos))) {
             String linea;
@@ -38,7 +38,7 @@ public class Ejecutable {
                 Juego juego = new Juego(campos.get(0), Integer.parseInt(campos.get(1)), genero);
                 panelJuego.anyadeJuego(juego);
                 panelGeneros.anyadeJuegoListaGenero(juego);
-                TPVLogger.log(Level.INFO, "Juego " + juego.getNombre() + " añadido correctamente.");
+                TPVLogger.log(Level.FINE, "Juego " + juego.getNombre() + " añadido correctamente.");
             }
         } catch (FileNotFoundException e) {
             TPVLogger.log(Level.SEVERE, "No se ha encontrado el fichero.");

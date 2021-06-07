@@ -66,6 +66,23 @@ public class Ticket implements Serializable {
         return dia + " a las " + hora;
     }
 
+    /**
+     * Obtiene la longitud de la lista.
+     * @return int tamaño de lista.
+     */
+    public int getLongitudLista() {
+        return listaJuegosSeleccionados.size();
+    }
+
+    /**
+     * Obtiene el valor del mapa, que es la cantidad de veces que se ha almacenado el juego en el mapa.
+     *
+     * @param juego
+     * @return int valor de la clave del juego.
+     */
+    public int getCantidadAlmacenada(Juego juego) {
+        return listaJuegosSeleccionados.get(juego);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,52 +99,10 @@ public class Ticket implements Serializable {
         return Objects.hash(listaJuegosSeleccionados, costeTotal, fechaCreacion);
     }
 
-    /**
-     * Añade un juego al listado de juegos del ticket.
-     *
-     * @param juego
-     */
-    public void anyadeATicket(Juego juego) {
-        Integer productoYaAnyadido = listaJuegosSeleccionados.putIfAbsent(juego, 1);
-        if (productoYaAnyadido != null) {
-            int cantidadAnterior = listaJuegosSeleccionados.get(juego);
-            listaJuegosSeleccionados.put(juego, cantidadAnterior + 1);
-        }
-        actualizaPrecio(juego);
-    }
+
 
     /**
-     * Actualiza el coste total del ticket.
-     *
-     * @param juego
-     */
-    private void actualizaPrecio(Juego juego) {
-        costeTotal += juego.getPrecio();
-    }
-
-    /**
-     * Obtiene el valor del mapa, que es la cantidad de veces que se ha almacenado el juego en el mapa.
-     *
-     * @param juego
-     * @return int valor de la clave del juego.
-     */
-    public int getCantidadAlmacenada(Juego juego) {
-        return listaJuegosSeleccionados.get(juego);
-    }
-
-    /**
-     * Borra el juego de la colección, también modifica el coste total, ya que se quita el precio de la clave quitada.
-     *
-     * @param juego
-     */
-    public void quitaDeLista(Juego juego) {
-        int cantidadJuego = listaJuegosSeleccionados.get(juego);
-        costeTotal = costeTotal - juego.getPrecio() * cantidadJuego;
-        listaJuegosSeleccionados.remove(juego);
-    }
-
-    /**
-     * Obtiene información del ticket en formato de String, para imprimir preferiblemente.
+     * Obtiene información del ticket en formato de String para imprimir.
      *
      * @return String datos del ticket.
      */
@@ -169,9 +144,41 @@ public class Ticket implements Serializable {
         return salida;
     }
 
-    public int getLongitudLista() {
-        return listaJuegosSeleccionados.size();
+    /**
+     * Añade un juego al listado de juegos del ticket.
+     *
+     * @param juego
+     */
+    public void anyadeATicket(Juego juego) {
+        Integer productoYaAnyadido = listaJuegosSeleccionados.putIfAbsent(juego, 1);
+        if (productoYaAnyadido != null) {
+            int cantidadAnterior = listaJuegosSeleccionados.get(juego);
+            listaJuegosSeleccionados.put(juego, cantidadAnterior + 1);
+        }
+        actualizaPrecio(juego);
     }
+
+    /**
+     * Actualiza el coste total del ticket.
+     *
+     * @param juego
+     */
+    private void actualizaPrecio(Juego juego) {
+        costeTotal += juego.getPrecio();
+    }
+
+    /**
+     * Borra el juego de la colección, también modifica el coste total, ya que se quita el precio de la clave quitada.
+     *
+     * @param juego
+     */
+    public void quitaDeLista(Juego juego) {
+        int cantidadJuego = listaJuegosSeleccionados.get(juego);
+        costeTotal = costeTotal - juego.getPrecio() * cantidadJuego;
+        listaJuegosSeleccionados.remove(juego);
+    }
+
+
 
 
 }

@@ -24,7 +24,7 @@ public class PanelJuegos {
      * Genera el panel y obtiene la referencia del panel del recibo.
      * @param panelRecibo
      */
-    public PanelJuegos(PanelRecibo panelRecibo, Dimension tamanyoMonitor) {
+    public PanelJuegos(PanelRecibo panelRecibo) {
         this.panelJuego = new JPanel(new FlowLayout(FlowLayout.LEFT));
         this.panelRecibo = panelRecibo;
     }
@@ -39,6 +39,7 @@ public class PanelJuegos {
 
     /**
      * Añade un boton de un juego al panel.
+     * Crea un BotonJuego para guardar la referencia.
      * Le añade un action listener para usar un el método de panelRecibo hanPulsado.
      * @param juego
      */
@@ -50,7 +51,13 @@ public class PanelJuegos {
 
     }
 
-    public JButton anyadeJuegoALista(Juego juego) {
+    /**
+     * Devuelve un botón con los datos del juego y con el action listener para realizar al acción hanPulsado.
+     * Es como el método anyadeJuego, pero devuelve un JButton en vez de añadir.
+     * @param juego
+     * @return JButton botón generado con los datos del juego.
+     */
+    public JButton devuelveBoton(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
         bj.getBoton().setPreferredSize(new Dimension(200, 200));
         bj.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));

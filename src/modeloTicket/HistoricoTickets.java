@@ -1,21 +1,32 @@
 package modeloTicket;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import modeloJuego.Juego;
-import sun.rmi.runtime.Log;
 import utilidades.TPVLogger;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.Arrays;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class HistoricoTickets implements Serializable {
+    /**
+     * Atributos de la clase HistoricoTickets
+     * Contiene 2 atributos globales que contiene la ruta de los archivos de lectura y escritura.
+     * También contiene un atributo global de ListaTickets, para que siempre haga referencia a esta y funcione bien
+     * la lectura y escritura de objetos.
+     */
     private final static File HISTORICO_DE_TICKETS = new File("Historico_Tickets.txt");
     private final static File HISTORICO_TICKETS_HTML = new File("Resumen_Tickets.html");
     private static ListaTickets listaTickets;
 
+    /**
+     * Guarda en el recibo un ticket.
+     * Si la longitud de la lista de los tickets que se le pasan no son mayor que 0, no añade.
+     * Utiliza el método leeListaTicket(), ListaTicket.anyadeTicket() y escribeListaTickets()
+     * Lee y escribe en HISTORICO_DE_TICKETS la lista.
+     *
+     * @param ticket
+     */
     public static void guardaRecibo(Ticket ticket) {
         if (ticket.getLongitudLista() > 0) {
             leeListaTicket();
@@ -28,6 +39,10 @@ public class HistoricoTickets implements Serializable {
 
     }
 
+    /**
+     * Escribe en el archivo la lista de tickets.
+     * @param listaTickets
+     */
     private static void escribeListaTickets(ListaTickets listaTickets) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(HISTORICO_DE_TICKETS))) {
             oos.writeObject(listaTickets);
@@ -37,6 +52,10 @@ public class HistoricoTickets implements Serializable {
         }
     }
 
+    /**
+     * Lee en el a Lee el archivo HISTORICO_DE_TICKETS para obtener la lista que hay. Si no hay se crea el archivo.
+     *
+     */
     private static void leeListaTicket() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(HISTORICO_DE_TICKETS))) {
             listaTickets = (ListaTickets) ois.readObject();
@@ -54,10 +73,12 @@ public class HistoricoTickets implements Serializable {
         }
     }
 
+    /**
+     * Genera el archivo html a partir de los datos del archivo HISTORICO_DE_TICKETS.
+     */
     public static void generaHTMLHistoricoticket() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(HISTORICO_DE_TICKETS));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(HISTORICO_TICKETS_HTML)))
-        {
+             BufferedWriter bw = new BufferedWriter(new FileWriter(HISTORICO_TICKETS_HTML))) {
             ListaTickets listaTickets;
             listaTickets = (ListaTickets) ois.readObject();
             bw.write(getCabezaraHtml());
@@ -73,6 +94,10 @@ public class HistoricoTickets implements Serializable {
         }
     }
 
+    /**
+     * Genera la cabezera de html.
+     * @return string con la cabezera de html.
+     */
     private static String getCabezaraHtml() {
         String cabezera = "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -86,12 +111,19 @@ public class HistoricoTickets implements Serializable {
         return cabezera;
     }
 
+    /**
+     * Escribe en el archivo que se le pase la tabla por cada ticket. Una fila por cada juego.
+     * @param listaTickets
+     * @param bw
+     * @throws IOException
+     */
+    //TODO: Cambiar a string.
     private static void escribeListaJuegosHtml(ListaTickets listaTickets, BufferedWriter bw) throws IOException {
 
         for (Ticket ticket : listaTickets.getListaTickets()) {
             bw.write("    <table>");
             bw.newLine();
-            bw.write("        <tr><th scope=\"col\" colspan=\"4\">Ticket creado el "+ ticket.getFechaCreacion() + "</th></tr>" );
+            bw.write("        <tr><th scope=\"col\" colspan=\"4\">Ticket creado el " + ticket.getFechaCreacion() + "</th></tr>");
             bw.newLine();
             bw.write("       <tr>\n" +
                     "            <th scope=\"col\">Nombre</th>\n" +
@@ -104,6 +136,7 @@ public class HistoricoTickets implements Serializable {
                 bw.write("        <tr>");
                 bw.newLine();
                 bw.write("            <td>" + juego.getNombre() + "</td>");
+                bw.newLine();
                 bw.write("            <td>" + juego.getPrecioFormateado() + "</td>");
                 bw.newLine();
                 bw.write("            <td>" + ticket.getCantidadAlmacenada(juego) + "</td>");

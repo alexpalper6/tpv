@@ -1,19 +1,17 @@
 package modeloPaneles;
 
 import modeloBoton.BotonGenero;
-import modeloBoton.BotonJuego;
 import modeloJuego.Generos;
 import modeloJuego.Juego;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serializable;
 import java.util.*;
 
 public class PanelGeneros {
     /**
      * Atributos del panel de género
-     * Contiene un mapa de generos y cada genero tiene una lista de juegos.
+     * Contiene un mapa de generos y cada genero tiene una lista de botones los cuales tienen datos de botones de juegos.
      * Contiene un conjunto de botones de generos que no se pueden repetir.
      * (Es necesario tener el boton y el mapa separados ya que necesitamos la referencia del genero del boton,
      * para poder llamar al mapa y realizar las acciones necesarias.)
@@ -29,9 +27,8 @@ public class PanelGeneros {
      * Genera el mapa y los botones.
      *
      * @param panelJuegos
-     * @param tamanyoMonitor
      */
-    public PanelGeneros(PanelJuegos panelJuegos, Dimension tamanyoMonitor) {
+    public PanelGeneros(PanelJuegos panelJuegos) {
         this.listaGenerosJuegos = new LinkedHashMap<>();
         this.panel = new JPanel(new GridLayout(0, 1));
         this.panelJuegos = panelJuegos;
@@ -49,9 +46,14 @@ public class PanelGeneros {
         return panel;
     }
 
-    //TODO: No debe de devolver esto.
+    /**
+     * Obtiene una copia del mapa.
+     * @return Map<Generos, Set<JButton>> copia del mapa.
+     */
     public Map<Generos, Set<JButton>> getListaGenerosJuegos() {
-        return listaGenerosJuegos;
+        Map<Generos, Set<JButton>> copiaMapa = new LinkedHashMap<>();
+        copiaMapa.putAll(listaGenerosJuegos);
+        return copiaMapa;
     }
 
     @Override
@@ -94,12 +96,13 @@ public class PanelGeneros {
 
 
     /**
-     * Añade el juego al mapa, cada juego con su género correspondiente, y al apartado de todos.
+     * Añade un botón con los datos del juego al mapa. Utiliza un método del panel de juegos para eso.
+     * Añade el botón a su clave correspondiente.
      *
      * @param juego
      */
     public void anyadeJuegoListaGenero(Juego juego) {
-        listaGenerosJuegos.get(juego.getGenero()).add(panelJuegos.anyadeJuegoALista(juego));
-        listaGenerosJuegos.get(Generos.TODOS).add(panelJuegos.anyadeJuegoALista(juego));
+        listaGenerosJuegos.get(juego.getGenero()).add(panelJuegos.devuelveBoton(juego));
+        listaGenerosJuegos.get(Generos.TODOS).add(panelJuegos.devuelveBoton(juego));
     }
 }

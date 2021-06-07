@@ -18,6 +18,7 @@ public class PanelRecibo {
      * Atributos de la clase PanelRecibo
      * Tiene 1 panel principal, en el que se añadirán los otros 2 paneles.
      * 2 paneles: panel que tiene la lista de juegos, y un panel con el coste total y un botón para imprimir el recibo.
+     * Tiene un JLabel que muestra el coste total del recibo.
      * También tiene un ticket, para obtener la referencia de los datos de los juegos.
      */
     private final JPanel panelPrincipal;
@@ -30,9 +31,9 @@ public class PanelRecibo {
      * Constructor de PanelRecibo.
      * Genera los atributos.
      * @param ticket
-     * @param tamanyoMonitor
+     *
      */
-    public PanelRecibo(Ticket ticket, Dimension tamanyoMonitor) {
+    public PanelRecibo(Ticket ticket) {
         this.panelPrincipal = new JPanel(new BorderLayout());
         this.panelListaJuegos = new JPanel(new FlowLayout(FlowLayout.LEADING));
         this.panelInteractivoRecibo = new JPanel();
@@ -100,6 +101,13 @@ public class PanelRecibo {
     }
 
     /**
+     * Actualiza el coste total del recibo.
+     */
+    private void actualizaCosteTotalRecibo() {
+        costeTotalRecibo.setText("Coste total: " + ticket.getCosteTotal());
+    }
+
+    /**
      * Genera la información del recibo a mostrar en la lista de juegos.
      * Método usado en el método hanPulsado.
      */
@@ -113,7 +121,6 @@ public class PanelRecibo {
             JButton boton = new JButton("X");
             JPanel panel = new JPanel();
 
-            //panel.setLayout();
 
             panel.add(label);
             panel.add(boton);
@@ -157,13 +164,4 @@ public class PanelRecibo {
 
 
     }
-
-    /**
-     * Actualiza el coste total del recibo.
-     */
-    private void actualizaCosteTotalRecibo() {
-        costeTotalRecibo.setText("Coste total: " + ticket.getCosteTotal());
-    }
-    //TODO: Para imprimir el recibo usamos textArea
-    //TODO: https://stackoverflow.com/questions/12558212/how-to-show-the-computation-area-in-jtextarea-field-like-a-receipt-with-tax-and
 }
