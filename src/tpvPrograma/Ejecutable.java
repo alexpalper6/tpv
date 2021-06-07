@@ -55,13 +55,14 @@ public class Ejecutable {
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
 
-        int tamanyoHorizontal = (int)tamanyoMonitor.getWidth() * 3 / 6;
+        int tamanyoHorizontal = (int)tamanyoMonitor.getWidth() * 3 / 7;
         panelJuego.getPanelJuego().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
         frame.add(panelJuego.getPanelJuego(), BorderLayout.WEST);
+        tamanyoHorizontal = (int)tamanyoMonitor.getWidth() * 3 / 7;
         panelRecibo.getPanelPrincipal().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
         frame.add(panelRecibo.getPanelPrincipal(), BorderLayout.CENTER);
 
-        tamanyoHorizontal = (int)tamanyoMonitor.getWidth() / 6;
+        tamanyoHorizontal = (int)tamanyoMonitor.getWidth() / 7;
         panelGeneros.getPanel().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
         frame.add(panelGeneros.getPanel(), BorderLayout.EAST);
 

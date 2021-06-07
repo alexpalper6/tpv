@@ -50,15 +50,22 @@ public class PanelJuegos {
 
     }
 
+    public JButton anyadeJuegoALista(Juego juego) {
+        BotonJuego bj = new BotonJuego(juego);
+        bj.getBoton().setPreferredSize(new Dimension(200, 200));
+        bj.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));
+        return bj.getBoton();
+    }
+
     /**
      * Actualiza los botones del panel de juegos, borra todos los que hay y añade nuevos a partir de una lista.
      * Esa listas que pasan son de la clase PanelGeneros.
      * @param listaDeJuegos
      */
-    public void actualizaBotonesEnPanel(Set<Juego> listaDeJuegos) {
+    public void actualizaBotonesEnPanel(Set<JButton> listaDeJuegos) {
         panelJuego.removeAll();
-        for (Juego juego : listaDeJuegos) {
-            anyadeJuego(juego);
+        for (JButton jb : listaDeJuegos) {
+            panelJuego.add(jb);
         }
         panelJuego.revalidate();
         panelJuego.repaint();

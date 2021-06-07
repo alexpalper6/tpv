@@ -1,6 +1,7 @@
 package modeloPaneles;
 
 import jdk.nashorn.internal.scripts.JO;
+import modeloBoton.BotonJuego;
 import modeloJuego.Juego;
 import modeloTicket.HistoricoTickets;
 import modeloTicket.Ticket;
@@ -32,13 +33,15 @@ public class PanelRecibo {
      * @param tamanyoMonitor
      */
     public PanelRecibo(Ticket ticket, Dimension tamanyoMonitor) {
-        this.panelPrincipal = new JPanel(new GridLayout(2,1));
+        this.panelPrincipal = new JPanel(new BorderLayout());
         this.panelListaJuegos = new JPanel(new FlowLayout(FlowLayout.LEADING));
         this.panelInteractivoRecibo = new JPanel();
         generaPanelInteractivo();
         this.ticket = ticket;
-        this.panelPrincipal.add(panelListaJuegos);
-        this.panelPrincipal.add(panelInteractivoRecibo);
+
+        this.panelPrincipal.add(panelListaJuegos, BorderLayout.CENTER);
+
+        this.panelPrincipal.add(panelInteractivoRecibo, BorderLayout.PAGE_END);
     }
 
     /**
@@ -106,18 +109,23 @@ public class PanelRecibo {
             String subtotal = ticket.getSubtotalJuego(j);
 
             JLabel label = new JLabel("x" + cantidad + " " + j.getInfo() + " - Total: " + subtotal);
-            label.setFont(new Font("Courier New", Font.PLAIN, 20));
-            JButton button = new JButton("X");
-            button.addActionListener( e-> {
-                panelListaJuegos.remove(label);
-                panelListaJuegos.remove(button);
+            label.setFont(new Font("Courier New", Font.PLAIN, 18));
+            JButton boton = new JButton("X");
+            JPanel panel = new JPanel();
+
+            //panel.setLayout();
+
+            panel.add(label);
+            panel.add(boton);
+            boton.addActionListener( e-> {
+                panelListaJuegos.remove(panel);
                 ticket.quitaDeLista(j);
                 actualizaCosteTotalRecibo();
                 panelListaJuegos.revalidate();
                 panelListaJuegos.repaint();
             });
-            panelListaJuegos.add(label);
-            panelListaJuegos.add(button);
+            panelListaJuegos.add(panel);
+
         }
     }
 
@@ -129,6 +137,7 @@ public class PanelRecibo {
         costeTotalRecibo.setFont(new Font("Courier New", Font.BOLD, 16));
         panelInteractivoRecibo.add(costeTotalRecibo);
         JButton botonImprimir = new JButton("Imprimir recibo");
+        botonImprimir.setPreferredSize(new Dimension(200, 200));
 
         botonImprimir.addActionListener( e-> {
 
@@ -141,7 +150,8 @@ public class PanelRecibo {
             }
         });
 
-        JButton botonDatos = new JButton("Mostrar datos histórico ticket");
+        JButton botonDatos = new JButton("Informe Tickets");
+        botonDatos.setPreferredSize(new Dimension(200, 200));
         botonDatos.addActionListener( e-> HistoricoTickets.generaHTMLHistoricoticket());
         panelInteractivoRecibo.add(botonImprimir);
         panelInteractivoRecibo.add(botonDatos);
