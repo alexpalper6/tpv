@@ -10,7 +10,7 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class BotonJuego implements Serializable {
+public class BotonJuego {
     /**
      * Atributos del boton, contiene el botón y el juego para tener sus datos.
      */

@@ -13,7 +13,7 @@ public class Ticket implements Serializable {
      * Atributos de la clase Tickets,
      */
     private final static int LONGITUD_FORMATO = 20;
-    private final Map<Juego,Integer> listaJuegosSeleccionados;
+    private final Map<Juego, Integer> listaJuegosSeleccionados;
     private int costeTotal;
     private final LocalDateTime fechaCreacion;
 
@@ -27,6 +27,7 @@ public class Ticket implements Serializable {
 
     /**
      * Obtiene los juegos que hay en el mapa.
+     *
      * @return Lista de juegos.
      */
     public List<Juego> getListaJuegosSeleccionados() {
@@ -37,6 +38,7 @@ public class Ticket implements Serializable {
 
     /**
      * Obtiene el coste total del ticket en formato de euro.
+     *
      * @return String de dinero.
      */
     public String getCosteTotal() {
@@ -45,6 +47,7 @@ public class Ticket implements Serializable {
 
     /**
      * Obtiene el precio * cantidad del juego.
+     *
      * @return String subtotal del juego formato euro.
      */
     public String getSubtotalJuego(Juego juego) {
@@ -54,6 +57,7 @@ public class Ticket implements Serializable {
 
     /**
      * Obtiene la fecha en la que se crea el ticket.
+     *
      * @return fecha
      */
     public String getFechaCreacion() {
@@ -61,7 +65,6 @@ public class Ticket implements Serializable {
         String hora = fechaCreacion.getHour() + ":" + fechaCreacion.getMinute() + ":" + fechaCreacion.getSecond();
         return dia + " a las " + hora;
     }
-
 
 
     @Override
@@ -81,6 +84,7 @@ public class Ticket implements Serializable {
 
     /**
      * Añade un juego al listado de juegos del ticket.
+     *
      * @param juego
      */
     public void anyadeATicket(Juego juego) {
@@ -94,6 +98,7 @@ public class Ticket implements Serializable {
 
     /**
      * Actualiza el coste total del ticket.
+     *
      * @param juego
      */
     private void actualizaPrecio(Juego juego) {
@@ -102,15 +107,17 @@ public class Ticket implements Serializable {
 
     /**
      * Obtiene el valor del mapa, que es la cantidad de veces que se ha almacenado el juego en el mapa.
+     *
      * @param juego
      * @return int valor de la clave del juego.
      */
     public int getCantidadAlmacenada(Juego juego) {
-        return  listaJuegosSeleccionados.get(juego);
+        return listaJuegosSeleccionados.get(juego);
     }
 
     /**
      * Borra el juego de la colección, también modifica el coste total, ya que se quita el precio de la clave quitada.
+     *
      * @param juego
      */
     public void quitaDeLista(Juego juego) {
@@ -121,6 +128,7 @@ public class Ticket implements Serializable {
 
     /**
      * Obtiene información del ticket en formato de String, para imprimir preferiblemente.
+     *
      * @return String datos del ticket.
      */
     public String getInfoTicketParaImprimir() {
@@ -134,20 +142,21 @@ public class Ticket implements Serializable {
         for (Juego j : listaJuegosSeleccionados.keySet()) {
             try {
                 salida += String.format(formatoIdentacion, j.getNombre(), "Precio: " + j.getPrecioFormateado(), "Cantidad: " + listaJuegosSeleccionados.get(j)
-                        , "Subtotal: " + getSubtotalJuego(j) );
+                        , "Subtotal: " + getSubtotalJuego(j));
                 salida += "\n";
             } catch (MissingFormatArgumentException msfae) {
                 //TODO: LOG
                 TPVLogger.log(Level.SEVERE, "El formato no coincide con la cantidad de columnas.");
             }
         }
-        salida +="\n----------------";
+        salida += "\n----------------";
         salida += "\nTOTAL: " + getCosteTotal();
         return salida;
     }
 
     /**
      * Obtiene el nombre con mayor longitud, se usa para formatear bien el ticket al imprimir.
+     *
      * @return int longitud del nombre más largo.
      */
     private int getNombreMasLargo() {
@@ -159,4 +168,10 @@ public class Ticket implements Serializable {
         }
         return salida;
     }
+
+    public int getLongitudLista() {
+        return listaJuegosSeleccionados.size();
+    }
+
+
 }

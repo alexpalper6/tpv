@@ -132,7 +132,7 @@ public class Juego implements Serializable {
 
     private ImageIcon cambiaTamanyoImagen(ImageIcon imagen) {
         Image img = imagen.getImage();
-        Image imagenTamanyoModif = img.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+        Image imagenTamanyoModif = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         return new ImageIcon(imagenTamanyoModif);
     }
 }

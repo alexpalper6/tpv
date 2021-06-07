@@ -11,7 +11,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 
-public class PanelRecibo implements Serializable {
+public class PanelRecibo {
 
     /**
      * Atributos de la clase PanelRecibo
@@ -128,16 +128,23 @@ public class PanelRecibo implements Serializable {
         this.costeTotalRecibo = new JLabel("Coste total: 0,0€");
         costeTotalRecibo.setFont(new Font("Courier New", Font.BOLD, 16));
         panelInteractivoRecibo.add(costeTotalRecibo);
-        JButton boton = new JButton("Imprimir recibo");
-        boton.addActionListener( e-> {
-            int respuesta = JOptionPane.showConfirmDialog(panelPrincipal,"Le has dado a imprimir recibo, ¿quiere hacerlo?", "Imprimir", JOptionPane.YES_NO_OPTION);
-            if (respuesta == JOptionPane.YES_OPTION) {
-                Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
-                HistoricoTickets.guardaRecibo(ticket);
-            }
+        JButton botonImprimir = new JButton("Imprimir recibo");
 
+        botonImprimir.addActionListener( e-> {
+
+            int respuesta = JOptionPane.showConfirmDialog(panelPrincipal,"Le has dado a imprimir recibo, ¿quiere hacerlo?"
+                    , "Imprimir " + ticket.getLongitudLista() + " diferente(s) artículos en recibo", JOptionPane.YES_NO_OPTION);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                HistoricoTickets.guardaRecibo(ticket);
+                Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
+
+            }
         });
-        panelInteractivoRecibo.add(boton);
+
+        JButton botonDatos = new JButton("Mostrar datos histórico ticket");
+        botonDatos.addActionListener( e-> HistoricoTickets.generaHTMLHistoricoticket());
+        panelInteractivoRecibo.add(botonImprimir);
+        panelInteractivoRecibo.add(botonDatos);
 
 
     }

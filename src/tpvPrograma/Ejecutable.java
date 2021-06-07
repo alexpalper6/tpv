@@ -51,18 +51,17 @@ public class Ejecutable {
             TPVLogger.log(Level.WARNING, "Algo ha pasado.");
         }
 
-        //TODO: Falta GridBagLayout
 
         JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
 
-        int tamanyoHorizontal = (int)tamanyoMonitor.getWidth() * 2 / 5;
+        int tamanyoHorizontal = (int)tamanyoMonitor.getWidth() * 3 / 6;
         panelJuego.getPanelJuego().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
         frame.add(panelJuego.getPanelJuego(), BorderLayout.WEST);
         panelRecibo.getPanelPrincipal().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
         frame.add(panelRecibo.getPanelPrincipal(), BorderLayout.CENTER);
 
-        tamanyoHorizontal = (int)tamanyoMonitor.getWidth() / 5;
+        tamanyoHorizontal = (int)tamanyoMonitor.getWidth() / 6;
         panelGeneros.getPanel().setPreferredSize(new Dimension(tamanyoHorizontal, (int)tamanyoMonitor.getHeight()));
         frame.add(panelGeneros.getPanel(), BorderLayout.EAST);
 

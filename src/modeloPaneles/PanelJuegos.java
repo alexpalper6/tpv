@@ -11,17 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class PanelJuegos implements Serializable {
+public class PanelJuegos {
     /**
      * Atributos de panel de juego.
      * Contiene el panel y una referencia al panel del recibo.
      */
     private final JPanel panelJuego;
-    private final JScrollPane panelConScroll;
     private final PanelRecibo panelRecibo;
-
-
-
 
     /**
      * Constructor del panel de juegos.
@@ -29,9 +25,7 @@ public class PanelJuegos implements Serializable {
      * @param panelRecibo
      */
     public PanelJuegos(PanelRecibo panelRecibo, Dimension tamanyoMonitor) {
-
         this.panelJuego = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        this.panelConScroll = new JScrollPane(panelJuego);
         this.panelRecibo = panelRecibo;
     }
 
@@ -50,10 +44,8 @@ public class PanelJuegos implements Serializable {
      */
     public void anyadeJuego(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
-        bj.getBoton().setPreferredSize(new Dimension(300, 300));
-        bj.getBoton().addActionListener(e -> {panelRecibo.hanPulsado(juego);
-                }
-        );
+        bj.getBoton().setPreferredSize(new Dimension(200, 200));
+        bj.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));
         panelJuego.add(bj.getBoton());
 
     }

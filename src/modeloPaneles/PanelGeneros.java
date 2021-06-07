@@ -10,7 +10,7 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.*;
 
-public class PanelGeneros implements Serializable {
+public class PanelGeneros {
     /**
      * Atributos del panel de género
      * Contiene un mapa de generos y cada genero tiene una lista de juegos.

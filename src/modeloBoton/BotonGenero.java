@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class BotonGenero implements Serializable {
+public class BotonGenero {
     /**
      * Atributos de la clase.
      * Tiene el género y un botón que contendrá la información del género.
