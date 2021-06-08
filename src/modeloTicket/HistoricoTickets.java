@@ -137,16 +137,18 @@ public class HistoricoTickets implements Serializable {
                 bw.newLine();
                 bw.write("            <td>" + juego.getNombre() + "</td>");
                 bw.newLine();
-                bw.write("            <td>" + juego.getPrecioFormateado() + "</td>");
+                String precio = juego.getPrecioFormateado();
+                bw.write("            <td>" + precio.substring(0, precio.length() - 1) + "&euro;" + "</td>");
                 bw.newLine();
                 bw.write("            <td>" + ticket.getCantidadAlmacenada(juego) + "</td>");
                 bw.newLine();
-                bw.write("            <td>" + ticket.getSubtotalJuego(juego) + " </td>");
+                String subtotal = ticket.getSubtotalJuego(juego);
+                bw.write("            <td>" + subtotal.substring(0, precio.length() - 1) + "&euro;" + " </td>");
                 bw.newLine();
                 bw.write("        </tr>");
                 bw.newLine();
             }
-            bw.write("<tr><td colspan=\"4\">TOTAL: " + ticket.getCosteTotal() + "</tr></td>");
+            bw.write("<tr><td colspan=\"4\">TOTAL: " + ticket.getCosteTotal().substring(0, ticket.getCosteTotal().length() - 1) + "&euro;" + "</tr></td>");
             bw.write("    </table>");
             bw.newLine();
         }

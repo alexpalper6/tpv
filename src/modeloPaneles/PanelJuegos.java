@@ -2,39 +2,39 @@ package modeloPaneles;
 
 import modeloBoton.BotonJuego;
 import modeloJuego.Juego;
-import modeloTicket.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class PanelJuegos {
     /**
      * Atributos de panel de juego.
      * Contiene el panel y una referencia al panel del recibo.
+     * Atributo que contiene el tamaño de los botones.
      */
-    private final JPanel panelJuego;
+    private final JPanel panelPrincipal;
     private final PanelRecibo panelRecibo;
+    private static int tamanyoBoton;
 
     /**
      * Constructor del panel de juegos.
-     * Genera el panel y obtiene la referencia del panel del recibo.
+     * Genera el panel y obtiene la referencia del panel del recibo. Establece el tamaño de los botones.
      * @param panelRecibo
+     * @param tamanyoBoton
      */
-    public PanelJuegos(PanelRecibo panelRecibo) {
-        this.panelJuego = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    public PanelJuegos(PanelRecibo panelRecibo, int tamanyoBoton) {
+        this.panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT));
         this.panelRecibo = panelRecibo;
+        PanelJuegos.tamanyoBoton = tamanyoBoton;
     }
 
     /**
      * Obtiene el panel del juego
      * @return panelJuego
      */
-    public JPanel getPanelJuego() {
-        return panelJuego;
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
     }
 
     /**
@@ -45,9 +45,9 @@ public class PanelJuegos {
      */
     public void anyadeJuego(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
-        bj.getBoton().setPreferredSize(new Dimension(200, 200));
+        bj.getBoton().setPreferredSize(new Dimension(tamanyoBoton, tamanyoBoton));
         bj.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));
-        panelJuego.add(bj.getBoton());
+        panelPrincipal.add(bj.getBoton());
 
     }
 
@@ -59,7 +59,7 @@ public class PanelJuegos {
      */
     public JButton devuelveBoton(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
-        bj.getBoton().setPreferredSize(new Dimension(200, 200));
+        bj.getBoton().setPreferredSize(new Dimension(tamanyoBoton, tamanyoBoton));
         bj.getBoton().addActionListener(e -> panelRecibo.hanPulsado(juego));
         return bj.getBoton();
     }
@@ -70,12 +70,12 @@ public class PanelJuegos {
      * @param listaDeJuegos
      */
     public void actualizaBotonesEnPanel(Set<JButton> listaDeJuegos) {
-        panelJuego.removeAll();
+        panelPrincipal.removeAll();
         for (JButton jb : listaDeJuegos) {
-            panelJuego.add(jb);
+            panelPrincipal.add(jb);
         }
-        panelJuego.revalidate();
-        panelJuego.repaint();
+        panelPrincipal.revalidate();
+        panelPrincipal.repaint();
     }
 
 

@@ -179,6 +179,7 @@ public class Ticket implements Serializable {
     }
 
 
-
-
+    public void limpiaListaJuegos() {
+        listaJuegosSeleccionados.clear();
+    }
 }

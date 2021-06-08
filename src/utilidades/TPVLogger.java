@@ -7,7 +7,7 @@ import java.util.logging.*;
 
 public class TPVLogger {
     private static final String FICHERO = "Log_TPV.txt";
-    static Logger logger;
+    private static Logger logger;
 
     /**
      * Constructor privado de MiLogger. Se usa en el método getLogger.

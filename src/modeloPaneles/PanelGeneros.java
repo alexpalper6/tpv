@@ -20,7 +20,7 @@ public class PanelGeneros {
     private final Map<Generos, Set<JButton>> listaGenerosJuegos;
     private final Set<BotonGenero> botonesGeneros;
     private final PanelJuegos panelJuegos;
-    private final JPanel panel;
+    private final JPanel panelPrincipal;
 
     /**
      * Constructor del panel de genero.
@@ -30,7 +30,7 @@ public class PanelGeneros {
      */
     public PanelGeneros(PanelJuegos panelJuegos) {
         this.listaGenerosJuegos = new LinkedHashMap<>();
-        this.panel = new JPanel(new GridLayout(0, 1));
+        this.panelPrincipal = new JPanel(new GridLayout(0, 1));
         this.panelJuegos = panelJuegos;
         this.botonesGeneros = new LinkedHashSet<>();
         generaMapa();
@@ -42,8 +42,8 @@ public class PanelGeneros {
      *
      * @return panel.
      */
-    public JPanel getPanel() {
-        return panel;
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
     }
 
     /**
@@ -61,12 +61,12 @@ public class PanelGeneros {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PanelGeneros that = (PanelGeneros) o;
-        return Objects.equals(listaGenerosJuegos, that.listaGenerosJuegos) && Objects.equals(botonesGeneros, that.botonesGeneros) && Objects.equals(panelJuegos, that.panelJuegos) && Objects.equals(panel, that.panel);
+        return Objects.equals(listaGenerosJuegos, that.listaGenerosJuegos) && Objects.equals(botonesGeneros, that.botonesGeneros) && Objects.equals(panelJuegos, that.panelJuegos) && Objects.equals(panelPrincipal, that.panelPrincipal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listaGenerosJuegos, botonesGeneros, panelJuegos, panel);
+        return Objects.hash(listaGenerosJuegos, botonesGeneros, panelJuegos, panelPrincipal);
     }
 
     /**
@@ -89,7 +89,7 @@ public class PanelGeneros {
             botonesGeneros.add(new BotonGenero(mapa.getKey()));
         }
         for (BotonGenero bg : botonesGeneros) {
-            panel.add(bg.getBoton());
+            panelPrincipal.add(bg.getBoton());
             bg.getBoton().addActionListener(e -> panelJuegos.actualizaBotonesEnPanel(listaGenerosJuegos.get(bg.getGenero())));
         }
     }

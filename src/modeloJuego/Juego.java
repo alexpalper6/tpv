@@ -8,13 +8,15 @@ import java.util.Objects;
 
 public class Juego implements Serializable {
     /**
-     * Atributos del objeto, obtenidos al leer de un fichero.
+     * Atributos del objeto, obtenidos al leer de ficheros.
+     * El atributo tamanyoImagen comparte la variable que se usa en el main para establecer el tamaño de los botones
+     * ya que son del mismo tamaño
      */
 
     private final String nombre;
     private int precio;
     private final Generos genero;
-
+    private static int tamanyoImagen;
     /**
      * Constructor del objeto
      * @param nombre
@@ -124,13 +126,22 @@ public class Juego implements Serializable {
     }
 
     /**
+     * Establece el tamaño de las imágenes, que es el mismo que el de los botones.
+     * @param tamanyoImagen
+     */
+    public static void setTamanyoImagen(int tamanyoImagen) {
+        Juego.tamanyoImagen = tamanyoImagen;
+    }
+    /**
      * Modifica el tamaño de la imagen a 100x100 si es necesario, para que todas las imágenes tengan el mismo tamaño.
      * @param imagen que se ha obtenido de la carpeta imágenes
      * @return imagen con el tamaño modificado.
      */
     private ImageIcon cambiaTamanyoImagen(ImageIcon imagen) {
         Image img = imagen.getImage();
-        Image imagenTamanyoModif = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        Image imagenTamanyoModif = img.getScaledInstance(tamanyoImagen, tamanyoImagen, Image.SCALE_SMOOTH);
         return new ImageIcon(imagenTamanyoModif);
     }
+
+
 }
