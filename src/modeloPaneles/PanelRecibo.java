@@ -12,7 +12,7 @@ import java.awt.*;
 public class PanelRecibo {
 
     /**
-     * Atributos de la clase PanelRecibo
+     * Atributos de la clase PanelRecibo.
      * Tiene 1 panel principal, en el que se añadirán los otros 2 paneles.
      * 2 paneles: panel que tiene la lista de juegos, y un panel con el coste total y un botón para imprimir el recibo.
      * Tiene un JLabel que muestra el coste total del recibo.
@@ -47,7 +47,7 @@ public class PanelRecibo {
 
     /**
      * Obtiene el panel de la lista de juegos.
-     * @return panelListaJuegos
+     * @return panelListaJuegos.
      */
     public JPanel getPanelListaJuegos() {
         return panelListaJuegos;
@@ -110,11 +110,12 @@ public class PanelRecibo {
     /**
      * Actualiza la distancia máxima a separar entre el texto y el botón de eliminar en cada línea del recibo.
      * Obtenido a partir del tamaño de la información de un juego.
-     * @param info
+     * @param longitud
      */
-    public void actualizaDistanciaMasLarga(String info) {
-        PanelRecibo.distanciaASepararMasLarga = info.length();
+    public static void actualizaDistanciaMasLarga(int longitud) {
+        PanelRecibo.distanciaASepararMasLarga = longitud;
     }
+
     /**
      * Genera la información del recibo a mostrar en la lista de juegos.
      * Método usado en el método hanPulsado.
@@ -125,14 +126,16 @@ public class PanelRecibo {
         for (Juego j : ticket.getListaJuegosSeleccionados()) {
             int cantidad = ticket.getCantidadAlmacenada(j);
             String subtotal = ticket.getSubtotalJuego(j);
+
             int distanciaASeparar = distanciaASepararMasLarga - j.getInfo().length();
             distanciaASeparar = distanciaASeparar <= 0 ? 1 : distanciaASeparar;
+
             JLabel label = new JLabel("x" + cantidad + " " + j.getInfo() + " - Total: " + subtotal
                     + String.format("%" + distanciaASeparar + "s", " "));
             label.setFont(new Font("Courier New", Font.PLAIN, 12));
+
             JButton boton = new JButton("X");
             JPanel panel = new JPanel();
-
 
             panel.add(label);
             panel.add(boton);
@@ -144,7 +147,6 @@ public class PanelRecibo {
                 panelListaJuegos.repaint();
             });
             panelListaJuegos.add(panel);
-
         }
     }
 
@@ -174,10 +176,7 @@ public class PanelRecibo {
 
             if (respuesta == JOptionPane.YES_OPTION) {
                 HistoricoTickets.guardaRecibo(ticket);
-                ticket.limpiaListaJuegos();
-                panelListaJuegos.removeAll();
-                panelListaJuegos.repaint();
-                panelListaJuegos.revalidate();
+                reiniciaRecibo();
                 Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
             }
         });
@@ -194,7 +193,17 @@ public class PanelRecibo {
         gbc.gridx = 1;
         gbc.gridy = 1;
         panelInteractivoRecibo.add(botonDatos, gbc);
+    }
 
-
+    /**
+     * Reinicia el recibo, borra la información y limpia los paneles.
+     */
+    private void reiniciaRecibo() {
+        ticket.limpiaListaJuegos();
+        ticket.reiniciaCosteTotal();
+        actualizaCosteTotalRecibo();
+        panelListaJuegos.removeAll();
+        panelListaJuegos.repaint();
+        panelListaJuegos.revalidate();
     }
 }

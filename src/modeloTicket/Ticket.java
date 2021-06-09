@@ -10,7 +10,9 @@ import java.util.logging.Level;
 
 public class Ticket implements Serializable {
     /**
-     * Atributos de la clase Tickets,
+     * Atributos de la clase Tickets.
+     * Contiene la longitud que se usará para formatear bien el recibo.
+     * Almacena los datos como la lista de los juegos, el coste total ,y la creación del recibo.
      */
     private final static int LONGITUD_FORMATO = 20;
     private final Map<Juego, Integer> listaJuegosSeleccionados;
@@ -155,16 +157,23 @@ public class Ticket implements Serializable {
             int cantidadAnterior = listaJuegosSeleccionados.get(juego);
             listaJuegosSeleccionados.put(juego, cantidadAnterior + 1);
         }
-        actualizaPrecio(juego);
+        actualizaCosteTotal(juego.getPrecio());
     }
 
     /**
      * Actualiza el coste total del ticket.
      *
-     * @param juego
+     * @param precio
      */
-    private void actualizaPrecio(Juego juego) {
-        costeTotal += juego.getPrecio();
+    private void actualizaCosteTotal(int precio) {
+        costeTotal += precio;
+    }
+
+    /**
+     * Reinicia el coste total.
+     */
+    public void reiniciaCosteTotal() {
+        costeTotal = 0;
     }
 
     /**

@@ -19,7 +19,8 @@ public class PanelJuegos {
 
     /**
      * Constructor del panel de juegos.
-     * Genera el panel y obtiene la referencia del panel del recibo. Establece el tamaño de los botones.
+     * Genera el panel y obtiene la referencia del panel del recibo.
+     * Establece el tamaño de los botones.
      * @param panelRecibo
      * @param tamanyoBoton
      */
@@ -30,7 +31,7 @@ public class PanelJuegos {
     }
 
     /**
-     * Obtiene el panel del juego
+     * Obtiene el panel del juego.
      * @return panelJuego
      */
     public JPanel getPanelPrincipal() {

@@ -10,25 +10,24 @@ public class Juego implements Serializable {
     /**
      * Atributos del objeto, obtenidos al leer de ficheros.
      * El atributo tamanyoImagen comparte la variable que se usa en el main para establecer el tamaño de los botones
-     * ya que son del mismo tamaño
+     * ya que son del mismo tamaño.
      */
 
     private final String nombre;
     private int precio;
     private final Generos genero;
     private static int tamanyoImagen;
+
     /**
-     * Constructor del objeto
+     * Constructor del objeto.
      * @param nombre
      * @param precio
      * @param genero
      */
     public Juego(String nombre, int precio, Generos genero) {
-
         this.nombre = nombre;
         this.precio = precio;
         this.genero = genero;
-
     }
 
     /**
@@ -132,6 +131,7 @@ public class Juego implements Serializable {
     public static void setTamanyoImagen(int tamanyoImagen) {
         Juego.tamanyoImagen = tamanyoImagen;
     }
+
     /**
      * Modifica el tamaño de la imagen a 100x100 si es necesario, para que todas las imágenes tengan el mismo tamaño.
      * @param imagen que se ha obtenido de la carpeta imágenes

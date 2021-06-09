@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public enum Generos implements Serializable {
     /**
-     * Tipos de géneros
+     * Tipos de géneros.
      */
     RPG("Juegos de Rol"),
     MMORPG("Rol multijugador masivo"),

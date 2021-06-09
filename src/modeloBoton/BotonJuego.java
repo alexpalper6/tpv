@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class BotonJuego {
     /**
-     * Atributos del boton, contiene el botón y el juego para tener sus datos.
+     * Atributos del botón, contiene el botón y el juego para tener sus datos.
      */
     private final JButton boton;
     private final Juego juego;
@@ -29,14 +29,14 @@ public class BotonJuego {
 
     /**
      * Devuelve el botón
-     * @return boton del objeto
+     * @return boton del objeto.
      */
     public JButton getBoton() {
         return boton;
     }
 
     /**
-     * Devuelve el juego que tiene
+     * Devuelve el juego que tiene.
      * @return juego
      */
     public Juego getJuego() {

@@ -10,10 +10,10 @@ import java.util.*;
 
 public class PanelGeneros {
     /**
-     * Atributos del panel de género
-     * Contiene un mapa de generos y cada genero tiene una lista de botones los cuales tienen datos de botones de juegos.
-     * Contiene un conjunto de botones de generos que no se pueden repetir.
-     * (Es necesario tener el boton y el mapa separados ya que necesitamos la referencia del genero del boton,
+     * Atributos del panel de género.
+     * Contiene un mapa de géneros y cada género tiene una lista de botones los cuales tienen datos de botones de juegos.
+     * Contiene un conjunto de botones de géneros que no se pueden repetir.
+     * (Es necesario tener el botón y el mapa separados ya que necesitamos la referencia del genero del botón,
      * para poder llamar al mapa y realizar las acciones necesarias.)
      * Contiene también un panel y una referencia al panel de juegos para poder añadir la lista al panel.
      */
@@ -23,7 +23,7 @@ public class PanelGeneros {
     private final JPanel panelPrincipal;
 
     /**
-     * Constructor del panel de genero.
+     * Constructor del panel de género.
      * Genera el mapa y los botones.
      *
      * @param panelJuegos
@@ -39,7 +39,6 @@ public class PanelGeneros {
 
     /**
      * Obtiene el panel.
-     *
      * @return panel.
      */
     public JPanel getPanelPrincipal() {
@@ -82,7 +81,7 @@ public class PanelGeneros {
      * Genera los botones a partir de los generos del mapa.
      * A partir de la lista de los botones, los añade al panel y crea su action listener.
      * Su action listener usa el método de la clase PanelJuegos para actualizar los botones del panel, usando este y los valores
-     * de la clave referente del genero del boton.
+     * de la clave referente del género del botón.
      */
     private void generaBotonesPanel() {
         for (Map.Entry<Generos, Set<JButton>> mapa : listaGenerosJuegos.entrySet()) {
