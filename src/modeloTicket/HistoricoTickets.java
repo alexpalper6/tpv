@@ -97,7 +97,7 @@ public class HistoricoTickets implements Serializable {
      * @return string con la cabezera de html.
      */
     private static String getCabezaraHtml() {
-        String cabezera = "<!DOCTYPE html>\n" +
+        String cabecera = "<!DOCTYPE html>\n" +
                 "<html lang=\"es\">\n" +
                 "<head>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
@@ -107,7 +107,7 @@ public class HistoricoTickets implements Serializable {
                 "    <link rel=\"stylesheet\" href=\"EstiloTablas.css\">\n" +
                 "</head>\n" +
                 "<body>\n";
-        return cabezera;
+        return cabecera;
     }
 
     /**
