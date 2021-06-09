@@ -51,6 +51,7 @@ public class Ticket implements Serializable {
      * Obtiene el precio * cantidad del juego.
      *
      * @return String subtotal del juego formato euro.
+     * @param juego Juego.
      */
     public String getSubtotalJuego(Juego juego) {
         int subtotal = juego.getPrecio() * listaJuegosSeleccionados.get(juego);
@@ -60,7 +61,7 @@ public class Ticket implements Serializable {
     /**
      * Obtiene la fecha en la que se crea el ticket.
      *
-     * @return fecha
+     * @return String con la fecha al crearse.
      */
     public String getFechaCreacion() {
         String dia = fechaCreacion.getDayOfMonth() + "-" + fechaCreacion.getMonthValue() + "-" + fechaCreacion.getYear();
@@ -79,7 +80,7 @@ public class Ticket implements Serializable {
     /**
      * Obtiene el valor del mapa, que es la cantidad de veces que se ha almacenado el juego en el mapa.
      *
-     * @param juego
+     * @param juego juego
      * @return int valor de la clave del juego.
      */
     public int getCantidadAlmacenada(Juego juego) {
@@ -119,8 +120,7 @@ public class Ticket implements Serializable {
         for (Juego j : listaJuegosSeleccionados.keySet()) {
             try {
                 salida += String.format(formatoIdentacion, j.getNombre(), "Precio: " + j.getPrecioFormateado(), "Cantidad: " + listaJuegosSeleccionados.get(j)
-                        , "Subtotal: " + getSubtotalJuego(j));
-                salida += "\n";
+                        , "Subtotal: " + getSubtotalJuego(j)) + "\n";
             } catch (MissingFormatArgumentException msfae) {
                 //TODO: LOG
                 TPVLogger.log(Level.SEVERE, "El formato no coincide con la cantidad de columnas.");
@@ -149,7 +149,7 @@ public class Ticket implements Serializable {
     /**
      * Añade un juego al listado de juegos del ticket.
      *
-     * @param juego
+     * @param juego juego
      */
     public void anyadeATicket(Juego juego) {
         Integer productoYaAnyadido = listaJuegosSeleccionados.putIfAbsent(juego, 1);
@@ -163,7 +163,7 @@ public class Ticket implements Serializable {
     /**
      * Actualiza el coste total del ticket.
      *
-     * @param precio
+     * @param precio coste del juego
      */
     private void actualizaCosteTotal(int precio) {
         costeTotal += precio;
@@ -179,7 +179,7 @@ public class Ticket implements Serializable {
     /**
      * Borra el juego de la colección, también modifica el coste total, ya que se quita el precio de la clave quitada.
      *
-     * @param juego
+     * @param juego juego
      */
     public void quitaDeLista(Juego juego) {
         int cantidadJuego = listaJuegosSeleccionados.get(juego);

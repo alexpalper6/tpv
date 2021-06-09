@@ -21,7 +21,7 @@ public enum Generos implements Serializable {
 
     /**
      * Constructor de Generos.
-     * @param descirpcion
+     * @param descirpcion Descripción del género.
      */
     Generos(String descirpcion) {
         this.descripcion = descirpcion;
@@ -29,7 +29,7 @@ public enum Generos implements Serializable {
 
     /**
      * Obtiene la descripción.
-     * @return descripcion
+     * @return Descripción del género.
      */
     public String getDescripcion() {
         return descripcion;

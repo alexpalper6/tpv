@@ -24,7 +24,7 @@ public class HistoricoTickets implements Serializable {
      * Utiliza el método leeListaTicket(), ListaTicket.anyadeTicket() y escribeListaTickets().
      * Lee y escribe en HISTORICO_DE_TICKETS la lista.
      *
-     * @param ticket
+     * @param ticket ticket
      */
     public static void guardaRecibo(Ticket ticket) {
         if (ticket.getLongitudLista() > 0) {
@@ -33,13 +33,13 @@ public class HistoricoTickets implements Serializable {
             escribeListaTickets(listaTickets);
         } else {
             JOptionPane.showConfirmDialog(null, "No ha añadido nada al ticket, no se guardará el recibo"
-                    , "Error", JOptionPane.WARNING_MESSAGE);
+                    , "Error", JOptionPane.OK_CANCEL_OPTION);
         }
     }
 
     /**
      * Escribe en el archivo la lista de tickets.
-     * @param listaTickets
+     * @param listaTickets lista ticket
      */
     private static void escribeListaTickets(ListaTickets listaTickets) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(HISTORICO_DE_TICKETS))) {
@@ -112,9 +112,9 @@ public class HistoricoTickets implements Serializable {
 
     /**
      * Escribe en el archivo que se le pase la tabla por cada ticket. Una fila por cada juego.
-     * @param listaTickets
-     * @param bw
-     * @throws IOException
+     * @param listaTickets Lista de ticket.
+     * @param bw Buffered writer.
+     * @throws IOException lo consigue escribir en fichero
      */
     private static void escribeListaJuegosHtml(ListaTickets listaTickets, BufferedWriter bw) throws IOException {
         for (Ticket ticket : listaTickets.getListaTickets()) {

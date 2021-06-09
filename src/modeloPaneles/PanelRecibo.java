@@ -30,7 +30,7 @@ public class PanelRecibo {
     /**
      * Constructor de PanelRecibo.
      * Genera los atributos.
-     * @param ticket
+     * @param ticket Ticket.
      *
      */
     public PanelRecibo(Ticket ticket) {
@@ -47,7 +47,7 @@ public class PanelRecibo {
 
     /**
      * Obtiene el panel de la lista de juegos.
-     * @return panelListaJuegos.
+     * @return Devuelve el panel de la lista de juegos.
      */
     public JPanel getPanelListaJuegos() {
         return panelListaJuegos;
@@ -55,7 +55,7 @@ public class PanelRecibo {
 
     /**
      * Obtiene el panel interactivo.
-     * @return panelInteractivoRecibo.
+     * @return Devuelve el panel interactivo del recibo.
      */
     public JPanel getPanelInteractivoRecibo() {
         return panelInteractivoRecibo;
@@ -63,7 +63,7 @@ public class PanelRecibo {
 
     /**
      * Obtiene el coste total que tiene almacenado el recibo.
-     * @return costeTotalRecibo.
+     * @return Devuelve el coste total del recibo.
      */
     public JLabel getCosteTotalRecibo() {
         return costeTotalRecibo;
@@ -71,7 +71,7 @@ public class PanelRecibo {
 
     /**
      * Obtiene el ticket.
-     * @return ticket.
+     * @return Devuelve el ticket.
      */
     public Ticket getTicket() {
         return ticket;
@@ -79,7 +79,7 @@ public class PanelRecibo {
 
     /**
      * Obtiene el panel principal.
-     * @return panelPrincipal.
+     * @return Devuelve el panel principal.
      */
     public JPanel getPanelPrincipal() {
         return panelPrincipal;
@@ -89,7 +89,7 @@ public class PanelRecibo {
      * Método usado en los action listeners de los botones de juegos.
      * Se le pasa un juego, lo añade al mapa del ticket y muestra la información en el panel de la lista de juegos.
      * También actualiza el coste total.
-     * @param juego
+     * @param juego Juego.
      */
     public void hanPulsado(Juego juego) {
         ticket.anyadeATicket(juego);
@@ -110,7 +110,7 @@ public class PanelRecibo {
     /**
      * Actualiza la distancia máxima a separar entre el texto y el botón de eliminar en cada línea del recibo.
      * Obtenido a partir del tamaño de la información de un juego.
-     * @param longitud
+     * @param longitud Tamaño de la información del juego.
      */
     public static void actualizaDistanciaMasLarga(int longitud) {
         PanelRecibo.distanciaASepararMasLarga = longitud;

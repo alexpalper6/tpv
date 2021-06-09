@@ -29,7 +29,7 @@ public class ListaTickets implements Serializable {
 
     /**
      * Añade a la lista un ticket.
-     * @param ticket
+     * @param ticket Ticket.
      */
     public void anyadeTicket(Ticket ticket) {
         listaTickets.add(ticket);

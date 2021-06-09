@@ -1,6 +1,5 @@
 package utilidades;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.*;
 
@@ -39,7 +38,7 @@ public class TPVLogger {
 
     /**
      * Crea el log si no está creado.
-     * @return Logger.
+     * @return Devuelve el logger.
      */
     private static Logger getLogger() {
         if(logger == null) {
@@ -50,8 +49,8 @@ public class TPVLogger {
 
     /**
      * Crea un mensaje de log de esta clase, usando un nivel, y el mensaje.
-     * @param level
-     * @param msg
+     * @param level Importancia del mensaje.
+     * @param msg Mensaje.
      */
     public static void log(Level level, String msg) {
         getLogger().log(level, msg);

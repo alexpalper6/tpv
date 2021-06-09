@@ -1,0 +1,4 @@
+jun 06, 2021 5:22:31 PM utilidades.TPVLogger log
+GRAVE: No se ha encontrado el fichero.
+jun 06, 2021 5:23:00 PM utilidades.TPVLogger log
+GRAVE: No se ha encontrado el fichero.

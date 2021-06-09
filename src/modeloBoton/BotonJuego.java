@@ -19,7 +19,7 @@ public class BotonJuego {
 
     /**
      * Constructor del objeto, genera botón a partir de la imagen del juego.
-     * @param juego
+     * @param juego juego
      */
     public BotonJuego(Juego juego) {
         this.juego = juego;
@@ -29,7 +29,7 @@ public class BotonJuego {
 
     /**
      * Devuelve el botón
-     * @return boton del objeto.
+     * @return Devuelve el botón del objeto.
      */
     public JButton getBoton() {
         return boton;
@@ -37,7 +37,7 @@ public class BotonJuego {
 
     /**
      * Devuelve el juego que tiene.
-     * @return juego
+     * @return Devuelve el juego.
      */
     public Juego getJuego() {
         return juego;

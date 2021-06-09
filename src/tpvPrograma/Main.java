@@ -18,10 +18,10 @@ import java.util.logging.Level;
 
 /**
  * Clase main del proyecto.
- * Usa las clases y los ficheros para cargar todo.
+ * Usa las clases y los ficheros para cargar lo necesario.
  * Implementa le uso de Dimension para obtener el tamaño del monitor y así distribuir los diferentes paneles dependiendo
  * del monitor que se usa.
- * @Autor Álex Palacios Pérez
+ * @author Alex Palacios Pérez
  */
 public class Main {
 

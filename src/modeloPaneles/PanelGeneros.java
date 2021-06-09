@@ -26,7 +26,7 @@ public class PanelGeneros {
      * Constructor del panel de género.
      * Genera el mapa y los botones.
      *
-     * @param panelJuegos
+     * @param panelJuegos panel de juegos
      */
     public PanelGeneros(PanelJuegos panelJuegos) {
         this.listaGenerosJuegos = new LinkedHashMap<>();
@@ -47,7 +47,7 @@ public class PanelGeneros {
 
     /**
      * Obtiene una copia del mapa.
-     * @return Map<Generos, Set<JButton>> copia del mapa.
+     * @return Copia del mapa.
      */
     public Map<Generos, Set<JButton>> getListaGenerosJuegos() {
         Map<Generos, Set<JButton>> copiaMapa = new LinkedHashMap<>();
@@ -98,7 +98,7 @@ public class PanelGeneros {
      * Añade un botón con los datos del juego al mapa. Utiliza un método del panel de juegos para eso.
      * Añade el botón a su clave correspondiente.
      *
-     * @param juego
+     * @param juego Juego.
      */
     public void anyadeJuegoListaGenero(Juego juego) {
         listaGenerosJuegos.get(juego.getGenero()).add(panelJuegos.devuelveBoton(juego));

@@ -16,7 +16,7 @@ public class BotonGenero {
 
     /**
      * Constructor de genero.
-     * @param genero
+     * @param genero genero.
      */
     public BotonGenero(Generos genero) {
         this.genero = genero;
@@ -25,7 +25,7 @@ public class BotonGenero {
 
     /**
      * Obtiene el género.
-     * @return genero
+     * @return Devuelve género del botón.
      */
     public Generos getGenero() {
         return genero;
@@ -33,7 +33,7 @@ public class BotonGenero {
 
     /**
      * Obtiene el botón.
-     * @return boton.
+     * @return Devuelve el botón.
      */
     public JButton getBoton() {
         return boton;

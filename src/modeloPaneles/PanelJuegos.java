@@ -21,8 +21,8 @@ public class PanelJuegos {
      * Constructor del panel de juegos.
      * Genera el panel y obtiene la referencia del panel del recibo.
      * Establece el tamaño de los botones.
-     * @param panelRecibo
-     * @param tamanyoBoton
+     * @param panelRecibo Panel de recibo.
+     * @param tamanyoBoton Tamaño del botón.
      */
     public PanelJuegos(PanelRecibo panelRecibo, int tamanyoBoton) {
         this.panelPrincipal = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -31,8 +31,8 @@ public class PanelJuegos {
     }
 
     /**
-     * Obtiene el panel del juego.
-     * @return panelJuego
+     * Obtiene el del juego.
+     * @return Panel principal.
      */
     public JPanel getPanelPrincipal() {
         return panelPrincipal;
@@ -42,7 +42,7 @@ public class PanelJuegos {
      * Añade un boton de un juego al panel.
      * Crea un BotonJuego para guardar la referencia.
      * Le añade un action listener para usar un el método de panelRecibo hanPulsado.
-     * @param juego
+     * @param juego Juego.
      */
     public void anyadeJuego(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
@@ -55,8 +55,8 @@ public class PanelJuegos {
     /**
      * Devuelve un botón con los datos del juego y con el action listener para realizar al acción hanPulsado.
      * Es como el método anyadeJuego, pero devuelve un JButton en vez de añadir.
-     * @param juego
-     * @return JButton botón generado con los datos del juego.
+     * @param juego Juego.
+     * @return Botón generado con los datos del juego.
      */
     public JButton devuelveBoton(Juego juego) {
         BotonJuego bj = new BotonJuego(juego);
@@ -68,7 +68,7 @@ public class PanelJuegos {
     /**
      * Actualiza los botones del panel de juegos, borra todos los que hay y añade nuevos a partir de una lista.
      * Esa listas que pasan son de la clase PanelGeneros.
-     * @param listaDeJuegos
+     * @param listaDeJuegos Lista de juegos.
      */
     public void actualizaBotonesEnPanel(Set<JButton> listaDeJuegos) {
         panelPrincipal.removeAll();
