@@ -104,7 +104,7 @@ public class HistoricoTickets implements Serializable {
                 "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                 "    <title>Datos de histórico de tickets</title>\n" +
-                "    <link rel=\"stylesheet\" href=\"Style.css\">\n" +
+                "    <link rel=\"stylesheet\" href=\"EstiloTablas.css\">\n" +
                 "</head>\n" +
                 "<body>\n";
         return cabezera;
