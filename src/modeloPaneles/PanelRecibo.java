@@ -176,8 +176,8 @@ public class PanelRecibo {
 
             if (respuesta == JOptionPane.YES_OPTION) {
                 HistoricoTickets.guardaRecibo(ticket);
-                reiniciaRecibo();
                 Impresora.imprimirTicket(ticket.getInfoTicketParaImprimir());
+                reiniciaRecibo();
             }
         });
 
